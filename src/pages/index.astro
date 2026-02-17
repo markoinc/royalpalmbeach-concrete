@@ -182,10 +182,13 @@ const faqSchema = {
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {siteConfig.services.map(service => (
           <a href={`/${service.slug}/`} class="group bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1">
-            <div class="h-48 bg-gradient-to-br from-navy to-navy-dark flex items-center justify-center">
-              <svg class="w-16 h-16 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 9h-1V4H6v5H5c-1.1 0-2 .9-2 2v5h2v4h14v-4h2v-5c0-1.1-.9-2-2-2zM8 6h8v3H8V6zm8 12H8v-4h8v4zm2-4h-1v-2H7v2H6v-3h12v3z"/>
-              </svg>
+            <div class="h-48 overflow-hidden">
+              <img 
+                src={`/images/${service.slug === "concrete-driveways" ? "driveway-bighouse" : service.slug === "concrete-patios" ? "concrete-patio" : service.slug === "concrete-slabs" ? "concrete-slab" : "stamped-driveway"}.webp`} 
+                alt={`${service.name} in Royal Palm Beach FL`} 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+                loading="lazy"
+              />
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{service.name}</h3>
