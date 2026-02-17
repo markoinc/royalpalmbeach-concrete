@@ -4,8 +4,8 @@ export const siteConfig = {
   shortName: "RPB Concrete Co.",
   domain: "royalpalmbeachconcrete.com",
   url: "https://royalpalmbeachconcrete.com",
-  phone: "(561) 555-0123",
-  phoneRaw: "+15615550123",
+  phone: "(561) 782-0848",
+  phoneRaw: "+15617820848",
   email: "info@royalpalmbeachconcrete.com",
   address: {
     street: "Royal Palm Beach, FL",
@@ -31,9 +31,9 @@ export const siteConfig = {
     instagram: "",
   },
   meta: {
-    title: "Royal Palm Beach Concrete Contractors | Driveways & Patios",
-    description: "Royal Palm Beach Concrete Co. - Trusted concrete contractors serving Royal Palm Beach, FL. Driveways, patios, slabs, stamped concrete. Call for a free estimate!",
-    keywords: "concrete contractors Royal Palm Beach FL, concrete driveway, concrete patio, stamped concrete, Palm Beach County concrete",
+    title: "Trusted Royal Palm Beach Concrete Contractors | Driveways, Slabs, Patios",
+    description: "Need a reliable concrete contractor in Royal Palm Beach? Count on Royal Palm Beach Concrete Co for top-quality driveways, patios, slabs, and more. Call 561-782-0848 today for a free estimate!",
+    keywords: "concrete contractors Royal Palm Beach FL, concrete driveway, concrete patio, concrete slabs, stamped concrete, Palm Beach County concrete",
   },
   services: [
     {
@@ -68,4 +68,6 @@ export const siteConfig = {
     { name: "Jupiter", slug: "jupiter" },
   ],
   county: "Palm Beach County",
+  // GHL Form embed URL - update with actual form ID when created
+  ghlFormUrl: "https://api.leadconnectorhq.com/widget/survey/PLACEHOLDER_FORM_ID",
 };
