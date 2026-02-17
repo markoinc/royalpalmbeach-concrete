@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteConfig } from '../../config/site';
+
+export function getStaticPaths() {
+  return siteConfig.serviceAreas.map(area => ({
+    params: { slug: area.slug },
+    props: { area }
+  }));
+}
+
+const { area } = Astro.props;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `Who is the best concrete contractor in ${area.name}, FL?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `${siteConfig.name} is a top-rated concrete contractor serving ${area.name} and ${siteConfig.county}. We specialize in driveways, patios, slabs, and stamped concrete with quality craftsmanship guaranteed.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `How much does concrete work cost in ${area.name}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Concrete costs in ${area.name} range from $8-$20 per square foot depending on the project type. Driveways average $8-$18/sq ft, patios $10-$20/sq ft, and slabs $6-$12/sq ft. Call ${siteConfig.phone} for a free estimate.`
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout 
+  title={`Concrete Contractors ${area.name} FL`}
+  description={`Professional concrete contractors in ${area.name}, FL. Driveways, patios, slabs, stamped concrete. Call ${siteConfig.phone} for free estimate.`}
+  canonical={`${siteConfig.url}/locations/${area.slug}/`}
+  schema={[faqSchema]}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-navy to-navy-dark text-white py-16 md:py-24">
+    <div class="container text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Concrete Contractors in {area.name}, FL</h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">Professional concrete services for residential and commercial properties in {area.name} and surrounding {siteConfig.county} communities.</p>
+      <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-primary text-lg px-8">Call {siteConfig.phone}</a>
+    </div>
+  </section>
+  
+  <!-- Content -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <h2 class="text-3xl font-bold text-navy mb-6">Concrete Services in {area.name}</h2>
+          
+          <p class="text-gray-600 mb-6">
+            Looking for reliable concrete contractors in {area.name}, Florida? {siteConfig.name} provides professional concrete services to homeowners and businesses throughout {area.name} and {siteConfig.county}. Our experienced team delivers quality workmanship on every project.
+          </p>
+          
+          <h3 class="text-2xl font-bold mb-4">Our Services in {area.name}:</h3>
+          <div class="grid sm:grid-cols-2 gap-4 mb-8">
+            {siteConfig.services.map(service => (
+              <a href={`/${service.slug}/`} class="flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-primary hover:text-white transition-colors group">
+                <svg class="w-5 h-5 text-primary group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                <span class="font-medium">{service.name}</span>
+              </a>
+            ))}
+          </div>
+          
+          <h3 class="text-2xl font-bold mb-4">Why Choose Us for Your {area.name} Project?</h3>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <span><strong>Local Expertise</strong> - We know {siteConfig.county}'s unique soil and climate conditions</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <span><strong>Quality Materials</strong> - 4,000 PSI concrete with proper reinforcement</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <span><strong>Fair Pricing</strong> - Transparent quotes with no hidden fees</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <span><strong>Licensed & Insured</strong> - Full coverage for your protection</span>
+            </li>
+          </ul>
+          
+          <div class="bg-gray-50 rounded-xl p-6 mb-8">
+            <h4 class="font-bold text-lg mb-3">Serving All of {siteConfig.county}</h4>
+            <p class="text-gray-600 mb-4">In addition to {area.name}, we serve these nearby communities:</p>
+            <div class="flex flex-wrap gap-2">
+              {siteConfig.serviceAreas.filter(a => a.slug !== area.slug).slice(0, 6).map(nearby => (
+                <a href={`/locations/${nearby.slug}/`} class="bg-white px-3 py-1 rounded text-sm hover:bg-primary hover:text-white transition-colors">
+                  {nearby.name}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <div>
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 sticky top-24">
+            <h3 class="text-xl font-bold mb-4">Get a Free Estimate</h3>
+            <p class="text-gray-600 mb-6">Contact us today for a free, no-obligation quote on your {area.name} concrete project.</p>
+            
+            <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-primary w-full mb-4">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              {siteConfig.phone}
+            </a>
+            
+            <a href="/contact/" class="btn btn-outline w-full">Request Quote Online</a>
+            
+            <div class="mt-6 pt-6 border-t">
+              <h4 class="font-bold mb-3">Business Hours</h4>
+              <div class="text-sm text-gray-600 space-y-1">
+                <p>Mon-Fri: {siteConfig.hours.weekdays}</p>
+                <p>Sat: {siteConfig.hours.saturday}</p>
+                <p>Sun: {siteConfig.hours.sunday}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="bg-gradient-to-r from-primary to-primary-dark py-16 text-white text-center">
+    <div class="container">
+      <h2 class="text-3xl font-bold mb-4">Ready to Start Your {area.name} Project?</h2>
+      <p class="text-lg opacity-90 mb-8">Get a free estimate today. Quality concrete work guaranteed.</p>
+      <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-white text-lg px-8">Call {siteConfig.phone}</a>
+    </div>
+  </section>
+</BaseLayout>

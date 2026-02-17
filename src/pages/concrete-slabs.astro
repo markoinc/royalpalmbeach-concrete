@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config/site';
+
+const faqs = [
+  {
+    question: "How much does a concrete slab cost?",
+    answer: `Concrete slab costs in ${siteConfig.address.city} range from $6-$12 per square foot for basic slabs. A 10x10 (100 sq ft) slab costs $600-$1,200. Garage floors and larger slabs cost $4-$8 per square foot due to volume pricing.`
+  },
+  {
+    question: "How thick should a concrete slab be?",
+    answer: "Standard slabs are 4 inches thick. Garage floors should be 4-6 inches. Heavy equipment pads and commercial slabs may require 6-8 inches with extra reinforcement. All our slabs include proper rebar or wire mesh reinforcement."
+  },
+  {
+    question: "How long before I can use a new concrete slab?",
+    answer: "Light foot traffic is safe after 24-48 hours. Wait 7 days before placing heavy items. For maximum strength, allow 28 days before heavy loads or vehicle traffic."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout 
+  title={`Concrete Slab Contractors ${siteConfig.address.city} FL`}
+  description={`Professional concrete slab installation in ${siteConfig.address.city}, FL. Foundation slabs, garage floors, shed pads. Call ${siteConfig.phone} for free estimate.`}
+  canonical={`${siteConfig.url}/concrete-slabs/`}
+  schema={[faqSchema]}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-navy to-navy-dark text-white py-16 md:py-24">
+    <div class="container text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Concrete Slab Contractors</h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">Professional concrete slab installation for foundations, garages, sheds, and more in {siteConfig.address.city}.</p>
+      <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-primary text-lg px-8">Call {siteConfig.phone}</a>
+    </div>
+  </section>
+  
+  <!-- Content -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-navy mb-6">Concrete Slab Installation in {siteConfig.address.city}</h2>
+        
+        <p class="text-gray-600 mb-6">
+          A properly poured concrete slab is the foundation of any successful construction project. Whether you need a foundation for a shed, a new garage floor, or a commercial equipment pad, our team delivers level, durable concrete slabs that last.
+        </p>
+        
+        <h3 class="text-2xl font-bold mb-4">Our Slab Services Include:</h3>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span><strong>Foundation Slabs</strong> - Level, reinforced slabs for buildings and additions</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span><strong>Garage Floors</strong> - Durable floors that resist oil, chemicals, and heavy loads</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span><strong>Shed & Outbuilding Pads</strong> - Perfect base for storage sheds and workshops</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span><strong>Equipment Pads</strong> - AC units, generators, hot tubs, and more</span>
+          </li>
+        </ul>
+        
+        <div class="bg-gray-50 rounded-xl p-8 mb-12">
+          <h3 class="text-2xl font-bold mb-6">Slab Pricing Guide</h3>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h4 class="font-bold text-lg mb-2">Small Pad</h4>
+              <p class="text-3xl font-bold text-primary mb-2">$8 - $12/sq ft</p>
+              <p class="text-gray-600 text-sm">Under 100 sq ft</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h4 class="font-bold text-lg mb-2">Shed/Garage</h4>
+              <p class="text-3xl font-bold text-primary mb-2">$6 - $10/sq ft</p>
+              <p class="text-gray-600 text-sm">100-500 sq ft</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h4 class="font-bold text-lg mb-2">Large Slab</h4>
+              <p class="text-3xl font-bold text-primary mb-2">$4 - $8/sq ft</p>
+              <p class="text-gray-600 text-sm">500+ sq ft</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- FAQ Section -->
+        <h3 class="text-2xl font-bold mb-6">Frequently Asked Questions</h3>
+        <div class="space-y-4">
+          {faqs.map((faq, i) => (
+            <details class="bg-gray-50 rounded-xl group" open={i === 0}>
+              <summary class="p-6 font-semibold cursor-pointer flex items-center justify-between gap-4 list-none">
+                {faq.question}
+                <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600">{faq.answer}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="bg-gradient-to-r from-primary to-primary-dark py-16 text-white text-center">
+    <div class="container">
+      <h2 class="text-3xl font-bold mb-4">Need a Concrete Slab?</h2>
+      <p class="text-lg opacity-90 mb-8">Get a free estimate for your project today.</p>
+      <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-white text-lg px-8">Call {siteConfig.phone}</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteConfig } from '../../config/site';
+---
+
+<BaseLayout 
+  title="Service Areas"
+  description={`${siteConfig.name} serves ${siteConfig.address.city} and all of ${siteConfig.county}. Find concrete contractors near you.`}
+  canonical={`${siteConfig.url}/locations/`}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-navy to-navy-dark text-white py-16 md:py-20">
+    <div class="container text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Service Areas</h1>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto">We provide professional concrete services throughout {siteConfig.county}, Florida.</p>
+    </div>
+  </section>
+  
+  <!-- Areas Grid -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-8">Communities We Serve</h2>
+        
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-12">
+          {siteConfig.serviceAreas.map(area => (
+            <a href={`/locations/${area.slug}/`} class="flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-primary hover:text-white transition-colors group">
+              <svg class="w-5 h-5 text-primary group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              <span class="font-medium">{area.name}, FL</span>
+            </a>
+          ))}
+        </div>
+        
+        <div class="bg-gray-50 rounded-xl p-8">
+          <h3 class="text-xl font-bold mb-4">About Our Service Area</h3>
+          <p class="text-gray-600 mb-4">
+            {siteConfig.name} is proud to serve homeowners and businesses throughout {siteConfig.county}. Our team of experienced concrete contractors brings quality workmanship to every project, from simple concrete slabs to elaborate stamped concrete designs.
+          </p>
+          <p class="text-gray-600 mb-6">
+            Don't see your city listed? We likely still serve your area! Contact us to confirm we can help with your concrete project.
+          </p>
+          <a href="/contact/" class="btn btn-primary">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="bg-gradient-to-r from-primary to-primary-dark py-16 text-white text-center">
+    <div class="container">
+      <h2 class="text-3xl font-bold mb-4">Need Concrete Work in {siteConfig.county}?</h2>
+      <p class="text-lg opacity-90 mb-8">Call today for a free estimate on your project.</p>
+      <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-white text-lg px-8">Call {siteConfig.phone}</a>
+    </div>
+  </section>
+</BaseLayout>

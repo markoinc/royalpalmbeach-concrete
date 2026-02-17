@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config/site';
+
+const faqs = [
+  {
+    question: "How much does stamped concrete cost?",
+    answer: `Stamped concrete in ${siteConfig.address.city} costs $12-$20 per square foot depending on pattern complexity and colors. Basic single-color stamped concrete is $12-$15/sq ft. Multi-color with borders costs $16-$20/sq ft.`
+  },
+  {
+    question: "Is stamped concrete durable?",
+    answer: "Yes! Stamped concrete is just as durable as regular concrete when properly installed and sealed. It can last 25-30+ years with proper maintenance. We use quality sealers that protect against UV fading and wear."
+  },
+  {
+    question: "What patterns are available for stamped concrete?",
+    answer: "Popular patterns include: flagstone, slate, cobblestone, brick, tile, wood plank, and custom designs. We can match colors to complement your home's exterior and landscaping."
+  },
+  {
+    question: "How do you maintain stamped concrete?",
+    answer: "Reseal every 2-3 years to maintain color and protection. Clean regularly with mild detergent and water. Avoid harsh chemicals and de-icing salts. We provide care instructions with every project."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout 
+  title={`Stamped Concrete Contractors ${siteConfig.address.city} FL`}
+  description={`Beautiful stamped concrete in ${siteConfig.address.city}, FL. Decorative patterns for driveways, patios, pool decks. Call ${siteConfig.phone} for free estimate.`}
+  canonical={`${siteConfig.url}/stamped-concrete/`}
+  schema={[faqSchema]}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-navy to-navy-dark text-white py-16 md:py-24">
+    <div class="container text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Stamped Concrete Contractors</h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">Transform your outdoor spaces with beautiful decorative stamped concrete in {siteConfig.address.city}.</p>
+      <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-primary text-lg px-8">Call {siteConfig.phone}</a>
+    </div>
+  </section>
+  
+  <!-- Content -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-navy mb-6">Decorative Stamped Concrete in {siteConfig.address.city}</h2>
+        
+        <p class="text-gray-600 mb-6">
+          Stamped concrete gives you the beautiful look of natural stone, brick, or tile at a fraction of the cost. Our skilled craftsmen create stunning decorative concrete surfaces that enhance your property's value and curb appeal.
+        </p>
+        
+        <h3 class="text-2xl font-bold mb-4">Popular Stamped Concrete Patterns:</h3>
+        <div class="grid md:grid-cols-2 gap-4 mb-8">
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h4 class="font-bold">Stone Patterns</h4>
+            <p class="text-gray-600 text-sm">Flagstone, slate, fieldstone, cobblestone</p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h4 class="font-bold">Brick Patterns</h4>
+            <p class="text-gray-600 text-sm">Herringbone, running bond, basket weave</p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h4 class="font-bold">Tile Patterns</h4>
+            <p class="text-gray-600 text-sm">European fan, random tile, Ashlar</p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h4 class="font-bold">Wood Patterns</h4>
+            <p class="text-gray-600 text-sm">Wood plank, boardwalk, timber</p>
+          </div>
+        </div>
+        
+        <h3 class="text-2xl font-bold mb-4">Applications:</h3>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span><strong>Driveways</strong> - Make a stunning first impression</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span><strong>Patios</strong> - Create an elegant outdoor living space</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span><strong>Pool Decks</strong> - Beautiful and slip-resistant</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span><strong>Walkways</strong> - Enhance your landscaping</span>
+          </li>
+        </ul>
+        
+        <div class="bg-gray-50 rounded-xl p-8 mb-12">
+          <h3 class="text-2xl font-bold mb-6">Stamped Concrete Pricing</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h4 class="font-bold text-lg mb-2">Basic Stamped</h4>
+              <p class="text-3xl font-bold text-primary mb-2">$12 - $15/sq ft</p>
+              <p class="text-gray-600 text-sm">Single color, simple pattern</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h4 class="font-bold text-lg mb-2">Premium Stamped</h4>
+              <p class="text-3xl font-bold text-primary mb-2">$16 - $20/sq ft</p>
+              <p class="text-gray-600 text-sm">Multi-color, complex patterns, borders</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- FAQ Section -->
+        <h3 class="text-2xl font-bold mb-6">Frequently Asked Questions</h3>
+        <div class="space-y-4">
+          {faqs.map((faq, i) => (
+            <details class="bg-gray-50 rounded-xl group" open={i === 0}>
+              <summary class="p-6 font-semibold cursor-pointer flex items-center justify-between gap-4 list-none">
+                {faq.question}
+                <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600">{faq.answer}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="bg-gradient-to-r from-primary to-primary-dark py-16 text-white text-center">
+    <div class="container">
+      <h2 class="text-3xl font-bold mb-4">Ready for Beautiful Stamped Concrete?</h2>
+      <p class="text-lg opacity-90 mb-8">Get a free design consultation and estimate today.</p>
+      <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-white text-lg px-8">Call {siteConfig.phone}</a>
+    </div>
+  </section>
+</BaseLayout>

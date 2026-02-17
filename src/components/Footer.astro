@@ -1,0 +1,88 @@
+---
+import { siteConfig } from '../config/site';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-gray-900 text-white">
+  <div class="container py-12 md:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <!-- Company Info -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">{siteConfig.name}</h3>
+        <p class="text-gray-400 mb-4">Professional concrete contractors serving {siteConfig.address.city} and {siteConfig.county}. Quality craftsmanship on every project.</p>
+        <div class="flex items-center gap-2 text-primary">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          <a href={`tel:${siteConfig.phoneRaw}`} class="font-semibold hover:underline">{siteConfig.phone}</a>
+        </div>
+      </div>
+      
+      <!-- Services -->
+      <div>
+        <h4 class="text-lg font-semibold text-primary mb-4">Services</h4>
+        <ul class="space-y-2">
+          {siteConfig.services.map(service => (
+            <li>
+              <a href={`/${service.slug}/`} class="text-gray-400 hover:text-primary transition-colors">
+                {service.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <!-- Service Areas -->
+      <div>
+        <h4 class="text-lg font-semibold text-primary mb-4">Service Areas</h4>
+        <ul class="space-y-2">
+          {siteConfig.serviceAreas.slice(0, 6).map(area => (
+            <li>
+              <a href={`/locations/${area.slug}/`} class="text-gray-400 hover:text-primary transition-colors">
+                {area.name}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a href="/locations/" class="text-primary font-medium hover:underline">View All Areas →</a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Contact -->
+      <div>
+        <h4 class="text-lg font-semibold text-primary mb-4">Contact</h4>
+        <ul class="space-y-3 text-gray-400">
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+            <span>{siteConfig.address.city}, {siteConfig.address.state} {siteConfig.address.zip}</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+            </svg>
+            <div>
+              <p>Mon-Fri: {siteConfig.hours.weekdays}</p>
+              <p>Sat: {siteConfig.hours.saturday}</p>
+              <p>Sun: {siteConfig.hours.sunday}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Bottom Bar -->
+  <div class="border-t border-gray-800">
+    <div class="container py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+      <p>© {currentYear} {siteConfig.name}. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="/privacy/" class="hover:text-primary transition-colors">Privacy Policy</a>
+        <a href="/terms/" class="hover:text-primary transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>

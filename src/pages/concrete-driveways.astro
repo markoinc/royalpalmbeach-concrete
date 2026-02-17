@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config/site';
+
+const service = siteConfig.services[0];
+
+const faqs = [
+  {
+    question: `How much does a concrete driveway cost in ${siteConfig.address.city}?`,
+    answer: `Concrete driveway costs in ${siteConfig.address.city} range from $8-$18 per square foot. A standard 400 sq ft single-car driveway costs $3,200-$7,200. A two-car 600 sq ft driveway costs $4,800-$10,800. Stamped concrete driveways cost 40-60% more.`
+  },
+  {
+    question: "How thick should a concrete driveway be?",
+    answer: "A residential concrete driveway should be 4 inches thick minimum for cars and light trucks. For heavy vehicles like RVs, trucks, or trailers, we recommend 5-6 inches. The driveway apron should be 6 inches thick. We use 4,000 PSI concrete and rebar reinforcement."
+  },
+  {
+    question: "How long does a concrete driveway last?",
+    answer: `A properly installed concrete driveway lasts 25-30 years in ${siteConfig.address.stateFullName}. With proper maintenance including sealing every 2-3 years and prompt crack repair, many driveways last 40-50 years.`
+  },
+  {
+    question: "How long until I can drive on a new concrete driveway?",
+    answer: "Wait 7 days before driving passenger vehicles on a new concrete driveway. Heavy trucks and RVs should wait 28 days for full cure. You can walk on the driveway after 24-48 hours."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Concrete Driveway Installation",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": siteConfig.name,
+    "telephone": siteConfig.phone
+  },
+  "areaServed": siteConfig.serviceAreas.map(a => ({ "@type": "City", "name": a.name })),
+  "description": service.description
+};
+---
+
+<BaseLayout 
+  title={`Concrete Driveway Contractors ${siteConfig.address.city} FL`}
+  description={`Expert concrete driveway contractors in ${siteConfig.address.city}, FL. New driveways, resurfacing, repairs. Call ${siteConfig.phone} for a free estimate.`}
+  canonical={`${siteConfig.url}/concrete-driveways/`}
+  schema={[faqSchema, serviceSchema]}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-navy to-navy-dark text-white py-16 md:py-24">
+    <div class="container text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Concrete Driveway Contractors</h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">Professional concrete driveway installation, replacement, and repair services in {siteConfig.address.city} and {siteConfig.county}.</p>
+      <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-primary text-lg px-8">
+        Call {siteConfig.phone} for a Free Estimate
+      </a>
+    </div>
+  </section>
+  
+  <!-- Content -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-navy mb-6">Expert Concrete Driveway Installation in {siteConfig.address.city}</h2>
+        
+        <p class="text-gray-600 mb-6">
+          Your driveway is one of the first things visitors see when they arrive at your home. A well-designed concrete driveway not only enhances curb appeal but also adds value to your property. At {siteConfig.name}, we specialize in creating beautiful, durable concrete driveways that stand the test of time.
+        </p>
+        
+        <h3 class="text-2xl font-bold mb-4">Our Driveway Services Include:</h3>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span><strong>New Driveway Installation</strong> - Complete driveway construction from excavation to finishing</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span><strong>Driveway Replacement</strong> - Remove old concrete and install a brand new driveway</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span><strong>Driveway Extensions</strong> - Extend your existing driveway for more parking space</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span><strong>Decorative Options</strong> - Stamped, stained, and exposed aggregate finishes</span>
+          </li>
+        </ul>
+        
+        <h3 class="text-2xl font-bold mb-4">Why Choose Concrete for Your Driveway?</h3>
+        <p class="text-gray-600 mb-6">
+          Concrete is the premier choice for driveways in {siteConfig.address.stateFullName}. It offers superior durability compared to asphalt, requires less maintenance, and can be customized with various finishes and colors. A properly installed concrete driveway will last 25-30 years or more, making it an excellent long-term investment.
+        </p>
+        
+        <div class="bg-gray-50 rounded-xl p-8 mb-12">
+          <h3 class="text-2xl font-bold mb-6">Driveway Pricing Guide</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h4 class="font-bold text-lg mb-2">Standard Concrete</h4>
+              <p class="text-3xl font-bold text-primary mb-2">$8 - $12/sq ft</p>
+              <p class="text-gray-600 text-sm">Basic broom finish, 4" thickness</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h4 class="font-bold text-lg mb-2">Stamped Concrete</h4>
+              <p class="text-3xl font-bold text-primary mb-2">$12 - $18/sq ft</p>
+              <p class="text-gray-600 text-sm">Decorative patterns, colored finish</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- FAQ Section -->
+        <h3 class="text-2xl font-bold mb-6">Frequently Asked Questions</h3>
+        <div class="space-y-4 mb-12">
+          {faqs.map((faq, i) => (
+            <details class="bg-gray-50 rounded-xl group" open={i === 0}>
+              <summary class="p-6 font-semibold cursor-pointer flex items-center justify-between gap-4 list-none">
+                {faq.question}
+                <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600">{faq.answer}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="bg-gradient-to-r from-primary to-primary-dark py-16 text-white text-center">
+    <div class="container">
+      <h2 class="text-3xl font-bold mb-4">Ready for a New Concrete Driveway?</h2>
+      <p class="text-lg opacity-90 mb-8">Get a free estimate for your driveway project today.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-white text-lg px-8">Call {siteConfig.phone}</a>
+        <a href="/contact/" class="btn border-2 border-white hover:bg-white hover:text-primary text-lg px-8">Request Quote Online</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

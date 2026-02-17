@@ -1,0 +1,325 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config/site';
+
+const faqs = [
+  {
+    question: `How much does a concrete driveway cost in ${siteConfig.address.city}?`,
+    answer: `Concrete driveway costs in ${siteConfig.address.city} typically range from $8-$18 per square foot, depending on size, thickness, and finish. A standard 400 sq ft driveway costs $3,200-$7,200. Stamped or decorative concrete costs more. Call ${siteConfig.phone} for a free estimate.`
+  },
+  {
+    question: "How long does concrete take to cure?",
+    answer: "Concrete reaches about 70% strength in 7 days and full strength in 28 days. You can typically walk on new concrete after 24-48 hours, but should wait 7 days before driving on a new driveway."
+  },
+  {
+    question: `What areas do you serve near ${siteConfig.address.city}?`,
+    answer: `We serve all of ${siteConfig.county} including ${siteConfig.serviceAreas.map(a => a.name).join(', ')}, and surrounding areas.`
+  },
+  {
+    question: "Do you offer free estimates?",
+    answer: `Yes! We offer free, no-obligation estimates for all concrete projects. Call ${siteConfig.phone} or fill out our online form to schedule your free consultation.`
+  },
+  {
+    question: "How thick should a concrete driveway be?",
+    answer: "A residential concrete driveway should be 4 inches thick for regular vehicles. For heavier vehicles like RVs or trucks, we recommend 5-6 inches. All our driveways use 4,000 PSI concrete for maximum durability."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout schema={[faqSchema]}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-navy to-navy-dark text-white py-16 md:py-24 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('/images/hero-pattern.svg')] opacity-10"></div>
+    <div class="container relative">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 bg-primary/20 border border-primary/30 px-4 py-2 rounded-full text-sm text-primary mb-6">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            Trusted Local Concrete Contractors
+          </div>
+          
+          <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+            {siteConfig.address.city}'s Premier <span class="text-primary">Concrete Contractors</span>
+          </h1>
+          
+          <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+            Professional concrete services for driveways, patios, slabs, and stamped concrete. Serving {siteConfig.county} with quality craftsmanship and exceptional results.
+          </p>
+          
+          <div class="flex flex-wrap gap-4 mb-8">
+            <div class="flex items-center gap-2 text-sm">
+              <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              Licensed & Insured
+            </div>
+            <div class="flex items-center gap-2 text-sm">
+              <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              Free Estimates
+            </div>
+            <div class="flex items-center gap-2 text-sm">
+              <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              Quality Guaranteed
+            </div>
+          </div>
+          
+          <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-primary text-xl px-8 py-4">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            Call {siteConfig.phone}
+          </a>
+        </div>
+        
+        <div class="bg-white rounded-xl p-8 shadow-2xl text-gray-900">
+          <h3 class="text-2xl font-bold text-center mb-2">Get Your Free Quote</h3>
+          <p class="text-gray-600 text-center mb-6">No obligation • Fast response</p>
+          
+          <form class="space-y-4">
+            <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition">
+            <input type="tel" name="phone" placeholder="Phone Number" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition">
+            <input type="email" name="email" placeholder="Email Address" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition">
+            <select name="service" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition">
+              <option value="">Select a Service</option>
+              {siteConfig.services.map(service => (
+                <option value={service.slug}>{service.name}</option>
+              ))}
+            </select>
+            <textarea name="message" rows="3" placeholder="Tell us about your project" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition resize-none"></textarea>
+            <button type="submit" class="btn btn-primary w-full">Get Free Estimate</button>
+          </form>
+          
+          <div class="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-3 text-center text-sm text-amber-800">
+            <strong>Limited Availability:</strong> We're booking fast. Request your quote today!
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Trust Bar -->
+  <section class="bg-gray-50 py-8 border-b">
+    <div class="container">
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center">
+            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-semibold">5-Star Rated</div>
+            <div class="text-sm text-gray-500">Customer Reviews</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center">
+            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-semibold">Fully Insured</div>
+            <div class="text-sm text-gray-500">Licensed Contractor</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center">
+            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-semibold">Quality Work</div>
+            <div class="text-sm text-gray-500">Satisfaction Guaranteed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Services Section -->
+  <section class="py-16 md:py-24" id="services">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="section-title">Our Concrete Services</h2>
+        <p class="section-subtitle">Professional concrete solutions for residential and commercial properties in {siteConfig.county}.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {siteConfig.services.map(service => (
+          <a href={`/${service.slug}/`} class="group bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1">
+            <div class="h-48 bg-gradient-to-br from-navy to-navy-dark flex items-center justify-center">
+              <svg class="w-16 h-16 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 9h-1V4H6v5H5c-1.1 0-2 .9-2 2v5h2v4h14v-4h2v-5c0-1.1-.9-2-2-2zM8 6h8v3H8V6zm8 12H8v-4h8v4zm2-4h-1v-2H7v2H6v-3h12v3z"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{service.name}</h3>
+              <p class="text-gray-600 text-sm">{service.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Process Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Getting your concrete project done is easy with our simple 3-step process.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center p-8 bg-white rounded-xl shadow-sm">
+          <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">1</div>
+          <h3 class="text-xl font-bold mb-3">Get a Free Quote</h3>
+          <p class="text-gray-600">Call us or fill out our form. We'll discuss your project and schedule a free on-site estimate.</p>
+        </div>
+        <div class="text-center p-8 bg-white rounded-xl shadow-sm">
+          <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">2</div>
+          <h3 class="text-xl font-bold mb-3">Approve the Plan</h3>
+          <p class="text-gray-600">We'll present a detailed proposal with clear pricing. No hidden fees, no surprises.</p>
+        </div>
+        <div class="text-center p-8 bg-white rounded-xl shadow-sm">
+          <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">3</div>
+          <h3 class="text-xl font-bold mb-3">We Get to Work</h3>
+          <p class="text-gray-600">Our expert crew completes your project on time and on budget. Quality guaranteed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Service Areas -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="section-title text-left mb-6">Areas We Serve</h2>
+          <p class="text-gray-600 mb-8">We're proud to serve {siteConfig.address.city} and communities throughout {siteConfig.county}. Our team of experienced concrete contractors brings quality workmanship to every project.</p>
+          
+          <div class="grid grid-cols-2 gap-3">
+            {siteConfig.serviceAreas.map(area => (
+              <a href={`/locations/${area.slug}/`} class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-primary hover:text-white transition-colors group">
+                <svg class="w-4 h-4 text-primary group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                {area.name}
+              </a>
+            ))}
+          </div>
+          
+          <a href="/locations/" class="inline-block mt-6 text-primary font-semibold hover:underline">View All Service Areas →</a>
+        </div>
+        
+        <div class="bg-gray-100 rounded-xl p-8">
+          <h3 class="text-xl font-bold mb-4">Why Choose {siteConfig.shortName}?</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div>
+                <strong class="block">Local Expertise</strong>
+                <span class="text-gray-600 text-sm">We know {siteConfig.county}'s soil conditions and climate requirements.</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div>
+                <strong class="block">Quality Materials</strong>
+                <span class="text-gray-600 text-sm">We use 4,000 PSI concrete and proper reinforcement on every job.</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div>
+                <strong class="block">Transparent Pricing</strong>
+                <span class="text-gray-600 text-sm">Clear quotes with no hidden fees. Know exactly what you'll pay.</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div>
+                <strong class="block">Satisfaction Guaranteed</strong>
+                <span class="text-gray-600 text-sm">We stand behind our work with a quality guarantee.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Get answers to common questions about our concrete services.</p>
+      </div>
+      
+      <div class="max-w-3xl mx-auto space-y-4">
+        {faqs.map((faq, i) => (
+          <details class="bg-white rounded-xl shadow-sm border border-gray-100 group" open={i === 0}>
+            <summary class="p-6 font-semibold cursor-pointer flex items-center justify-between gap-4 list-none">
+              {faq.question}
+              <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-gray-600">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="bg-gradient-to-r from-primary to-primary-dark py-16 md:py-20 text-white text-center">
+    <div class="container">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Concrete Project?</h2>
+      <p class="text-xl opacity-90 mb-8 max-w-2xl mx-auto">Get a free, no-obligation estimate today. Our team is ready to help bring your vision to life.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-white text-lg px-8">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          Call {siteConfig.phone}
+        </a>
+        <a href="/contact/" class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8">
+          Request a Quote Online
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

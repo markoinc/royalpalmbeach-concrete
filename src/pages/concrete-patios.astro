@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config/site';
+
+const faqs = [
+  {
+    question: `How much does a concrete patio cost in ${siteConfig.address.city}?`,
+    answer: `Concrete patio costs in ${siteConfig.address.city} range from $8-$20 per square foot depending on finish type. A basic 200 sq ft patio costs $1,600-$4,000. Stamped or decorative concrete patios cost more.`
+  },
+  {
+    question: "What finishes are available for concrete patios?",
+    answer: "We offer broom finish, stamped concrete (mimics stone, brick, tile), exposed aggregate, stained concrete, and smooth trowel finish. Stamped patterns include flagstone, cobblestone, brick, tile, and wood plank designs."
+  },
+  {
+    question: "How long does it take to install a concrete patio?",
+    answer: "A typical patio installation takes 2-3 days. This includes excavation, forming, pouring, and finishing. You can walk on the patio after 24-48 hours and place furniture after 7 days."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout 
+  title={`Concrete Patio Contractors ${siteConfig.address.city} FL`}
+  description={`Expert concrete patio installation in ${siteConfig.address.city}, FL. Custom patios, pool decks, stamped concrete. Call ${siteConfig.phone} for a free estimate.`}
+  canonical={`${siteConfig.url}/concrete-patios/`}
+  schema={[faqSchema]}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-navy to-navy-dark text-white py-16 md:py-24">
+    <div class="container text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Concrete Patio Contractors</h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">Beautiful, durable concrete patios for outdoor living in {siteConfig.address.city} and {siteConfig.county}.</p>
+      <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-primary text-lg px-8">Call {siteConfig.phone}</a>
+    </div>
+  </section>
+  
+  <!-- Content -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-navy mb-6">Custom Concrete Patios in {siteConfig.address.city}</h2>
+        
+        <p class="text-gray-600 mb-6">
+          Extend your living space outdoors with a beautiful concrete patio. {siteConfig.address.stateFullName}'s year-round warm weather makes outdoor living spaces essential. Our expert team designs and installs custom concrete patios that complement your home and lifestyle.
+        </p>
+        
+        <h3 class="text-2xl font-bold mb-4">Our Patio Services Include:</h3>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span><strong>Custom Patio Design</strong> - Patios of any size and shape to fit your space</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span><strong>Pool Decks</strong> - Slip-resistant, cool-to-the-touch pool surrounds</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span><strong>Stamped & Decorative</strong> - Patterns that mimic natural stone, brick, and tile</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            <span><strong>Patio Extensions</strong> - Expand your existing outdoor space</span>
+          </li>
+        </ul>
+        
+        <div class="bg-gray-50 rounded-xl p-8 mb-12">
+          <h3 class="text-2xl font-bold mb-6">Patio Pricing Guide</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h4 class="font-bold text-lg mb-2">Basic Patio</h4>
+              <p class="text-3xl font-bold text-primary mb-2">$8 - $12/sq ft</p>
+              <p class="text-gray-600 text-sm">Broom or smooth finish</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h4 class="font-bold text-lg mb-2">Stamped Patio</h4>
+              <p class="text-3xl font-bold text-primary mb-2">$14 - $20/sq ft</p>
+              <p class="text-gray-600 text-sm">Decorative patterns & colors</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- FAQ Section -->
+        <h3 class="text-2xl font-bold mb-6">Frequently Asked Questions</h3>
+        <div class="space-y-4">
+          {faqs.map((faq, i) => (
+            <details class="bg-gray-50 rounded-xl group" open={i === 0}>
+              <summary class="p-6 font-semibold cursor-pointer flex items-center justify-between gap-4 list-none">
+                {faq.question}
+                <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600">{faq.answer}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="bg-gradient-to-r from-primary to-primary-dark py-16 text-white text-center">
+    <div class="container">
+      <h2 class="text-3xl font-bold mb-4">Create Your Perfect Outdoor Space</h2>
+      <p class="text-lg opacity-90 mb-8">Get a free estimate for your concrete patio today.</p>
+      <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-white text-lg px-8">Call {siteConfig.phone}</a>
+    </div>
+  </section>
+</BaseLayout>
