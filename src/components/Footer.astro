@@ -1,31 +1,46 @@
 ---
 import { siteConfig } from '../config/site';
-
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-gray-900 text-white">
-  <div class="container py-12 md:py-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+<footer class="bg-slate text-white">
+  <!-- Main Footer -->
+  <div class="container py-16">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
       <!-- Company Info -->
       <div>
-        <h3 class="text-xl font-bold mb-4">{siteConfig.name}</h3>
-        <p class="text-gray-400 mb-4">Professional concrete contractors serving {siteConfig.address.city} and {siteConfig.county}. Quality craftsmanship on every project.</p>
-        <div class="flex items-center gap-2 text-primary">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center">
+            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 12h-2v3h-3v2h5v-5zM7 9h3V7H5v5h2V9zm14-6H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16.01H3V4.99h18v14.02z"/>
+            </svg>
+          </div>
+          <div>
+            <span class="text-xl font-bold block">{siteConfig.shortName}</span>
+            <span class="text-sm text-gray-400">Premium Concrete</span>
+          </div>
+        </div>
+        <p class="text-gray-400 mb-6">
+          {siteConfig.name} provides expert concrete services throughout {siteConfig.county}. Driveways, patios, slabs, and stamped concrete — built to last.
+        </p>
+        <a href={`tel:${siteConfig.phoneRaw}`} class="inline-flex items-center gap-2 text-primary font-bold text-lg hover:text-primary-light transition">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
           </svg>
-          <a href={`tel:${siteConfig.phoneRaw}`} class="font-semibold hover:underline">{siteConfig.phone}</a>
-        </div>
+          {siteConfig.phone}
+        </a>
       </div>
       
       <!-- Services -->
       <div>
-        <h4 class="text-lg font-semibold text-primary mb-4">Services</h4>
-        <ul class="space-y-2">
+        <h4 class="text-lg font-bold mb-6 text-primary">Our Services</h4>
+        <ul class="space-y-3">
           {siteConfig.services.map(service => (
             <li>
-              <a href={`/${service.slug}/`} class="text-gray-400 hover:text-primary transition-colors">
+              <a href={`/${service.slug}/`} class="text-gray-400 hover:text-white transition flex items-center gap-2">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
                 {service.name}
               </a>
             </li>
@@ -35,53 +50,102 @@ const currentYear = new Date().getFullYear();
       
       <!-- Service Areas -->
       <div>
-        <h4 class="text-lg font-semibold text-primary mb-4">Service Areas</h4>
-        <ul class="space-y-2">
-          {siteConfig.serviceAreas.slice(0, 6).map(area => (
+        <h4 class="text-lg font-bold mb-6 text-primary">Service Areas</h4>
+        <ul class="space-y-2 text-sm">
+          {siteConfig.serviceAreas.slice(0, 8).map(area => (
             <li>
-              <a href={`/locations/${area.slug}/`} class="text-gray-400 hover:text-primary transition-colors">
+              <a href={`/locations/${area.slug}/`} class="text-gray-400 hover:text-white transition">
                 {area.name}
               </a>
             </li>
           ))}
           <li>
-            <a href="/locations/" class="text-primary font-medium hover:underline">View All Areas →</a>
+            <a href="/locations/" class="text-primary hover:text-primary-light transition font-medium">
+              View All Areas →
+            </a>
           </li>
         </ul>
       </div>
       
-      <!-- Contact -->
+      <!-- Contact & Hours -->
       <div>
-        <h4 class="text-lg font-semibold text-primary mb-4">Contact</h4>
-        <ul class="space-y-3 text-gray-400">
+        <h4 class="text-lg font-bold mb-6 text-primary">Contact Us</h4>
+        <ul class="space-y-4">
           <li class="flex items-start gap-3">
-            <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-primary mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
             </svg>
-            <span>{siteConfig.address.city}, {siteConfig.address.state} {siteConfig.address.zip}</span>
+            <span class="text-gray-400">{siteConfig.address.full}</span>
           </li>
           <li class="flex items-start gap-3">
-            <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+            <svg class="w-5 h-5 text-primary mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
             </svg>
-            <div>
+            <a href={`tel:${siteConfig.phoneRaw}`} class="text-gray-400 hover:text-white transition">{siteConfig.phone}</a>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-primary mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+            </svg>
+            <div class="text-gray-400">
               <p>Mon-Fri: {siteConfig.hours.weekdays}</p>
               <p>Sat: {siteConfig.hours.saturday}</p>
               <p>Sun: {siteConfig.hours.sunday}</p>
             </div>
           </li>
         </ul>
+        
+        <div class="mt-6">
+          <a href="/contact/" class="btn btn-primary w-full justify-center">
+            Get Free Estimate
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Trust Badges -->
+  <div class="border-t border-slate-light">
+    <div class="container py-8">
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 text-center">
+        <div class="flex items-center gap-2">
+          <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+          </svg>
+          <span class="text-sm">Licensed & Insured</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <span class="text-sm">5-Star Rated</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+          <span class="text-sm">Satisfaction Guaranteed</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/>
+          </svg>
+          <span class="text-sm">Local & Family Owned</span>
+        </div>
       </div>
     </div>
   </div>
   
   <!-- Bottom Bar -->
-  <div class="border-t border-gray-800">
-    <div class="container py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-      <p>© {currentYear} {siteConfig.name}. All rights reserved.</p>
-      <div class="flex gap-6">
-        <a href="/privacy/" class="hover:text-primary transition-colors">Privacy Policy</a>
-        <a href="/terms/" class="hover:text-primary transition-colors">Terms of Service</a>
+  <div class="border-t border-slate-light bg-slate-dark">
+    <div class="container py-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+        <p>© {currentYear} {siteConfig.name}. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="/privacy/" class="hover:text-white transition">Privacy Policy</a>
+          <a href="/terms/" class="hover:text-white transition">Terms of Service</a>
+          <a href="/sitemap-index.xml" class="hover:text-white transition">Sitemap</a>
+        </div>
       </div>
     </div>
   </div>

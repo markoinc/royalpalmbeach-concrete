@@ -1,24 +1,69 @@
 ---
-import '../styles/global.css';
+import { siteConfig } from '../config/site';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { siteConfig } from '../config/site';
 
 interface Props {
   title?: string;
   description?: string;
   canonical?: string;
   schema?: object[];
+  noindex?: boolean;
 }
 
 const { 
-  title = siteConfig.meta.title,
-  description = siteConfig.meta.description,
-  canonical = siteConfig.url,
-  schema = []
+  title = `${siteConfig.name} | Driveways, Patios & Slabs`,
+  description = `Premium concrete contractor in ${siteConfig.address.city}, FL. Expert driveways, patios, slabs & stamped concrete. Licensed & insured. Free estimates! Call ${siteConfig.phone}`,
+  canonical = Astro.url.pathname,
+  schema = [],
+  noindex = false,
 } = Astro.props;
 
-const fullTitle = title === siteConfig.meta.title ? title : `${title} | ${siteConfig.name}`;
+const fullUrl = `${siteConfig.url}${canonical}`;
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": siteConfig.url,
+  "name": siteConfig.name,
+  "image": `${siteConfig.url}/images/og-image.jpg`,
+  "telephone": siteConfig.phone,
+  "email": siteConfig.email,
+  "url": siteConfig.url,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": siteConfig.address.city,
+    "addressRegion": siteConfig.address.state,
+    "postalCode": siteConfig.address.zip,
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": siteConfig.geo.lat,
+    "longitude": siteConfig.geo.lng
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "08:00",
+      "closes": "16:00"
+    }
+  ],
+  "priceRange": "$$",
+  "areaServed": siteConfig.serviceAreas.map(area => ({
+    "@type": "City",
+    "name": area.name
+  }))
+};
+
+const allSchemas = [localBusinessSchema, ...schema];
 ---
 
 <!DOCTYPE html>
@@ -26,84 +71,58 @@ const fullTitle = title === siteConfig.meta.title ? title : `${title} | ${siteCo
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{fullTitle}</title>
   <meta name="description" content={description}>
-  <meta name="keywords" content={siteConfig.meta.keywords}>
-  <link rel="canonical" href={canonical}>
+  {noindex && <meta name="robots" content="noindex, nofollow">}
   
-  <!-- Open Graph -->
-  <meta property="og:title" content={fullTitle}>
-  <meta property="og:description" content={description}>
-  <meta property="og:type" content="website">
-  <meta property="og:url" content={canonical}>
-  <meta property="og:site_name" content={siteConfig.name}>
+  <title>{title}</title>
   
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Favicon -->
+  <link rel="canonical" href={fullUrl}>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   
-  <!-- Schema Markup -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": `${siteConfig.url}/#business`,
-    "name": siteConfig.name,
-    "telephone": siteConfig.phone,
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": siteConfig.address.city,
-      "addressRegion": siteConfig.address.state,
-      "postalCode": siteConfig.address.zip,
-      "addressCountry": siteConfig.address.country
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": siteConfig.geo.latitude,
-      "longitude": siteConfig.geo.longitude
-    },
-    "url": siteConfig.url,
-    "priceRange": "$$",
-    "openingHours": siteConfig.hours.schema,
-    "areaServed": siteConfig.serviceAreas.map(area => ({
-      "@type": "City",
-      "name": area.name
-    })),
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Concrete Services",
-      "itemListElement": siteConfig.services.map(service => ({
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": service.name
-        }
-      }))
-    }
-  })} />
+  <!-- Open Graph -->
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={fullUrl}>
+  <meta property="og:type" content="website">
+  <meta property="og:image" content={`${siteConfig.url}/images/og-image.jpg`}>
   
-  {schema.map(s => (
-    <script type="application/ld+json" set:html={JSON.stringify(s)} />
-  ))}
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  
+  <!-- Schema.org -->
+  <script type="application/ld+json" set:html={JSON.stringify(allSchemas)}></script>
+  
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="flex flex-col min-h-screen">
   <Header />
-  <main class="flex-1">
+  
+  <main class="flex-grow">
     <slot />
   </main>
+  
   <Footer />
   
   <!-- Sticky Mobile CTA -->
-  <div class="fixed bottom-0 left-0 right-0 bg-primary p-3 shadow-lg md:hidden z-50">
-    <a href={`tel:${siteConfig.phoneRaw}`} class="flex items-center justify-center gap-3 text-white text-lg font-bold">
+  <div class="sticky-cta">
+    <a href={`tel:${siteConfig.phoneRaw}`} class="flex items-center justify-center gap-3 bg-primary text-white py-3 rounded-lg font-bold text-lg pulse-gold">
       <svg class="w-6 h-6 animate-phone" fill="currentColor" viewBox="0 0 24 24">
         <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
       </svg>
-      {siteConfig.phone}
+      Tap to Call - Free Quote!
     </a>
   </div>
 </body>
 </html>
+
+<!-- Sticky Mobile CTA -->
+<div class="fixed bottom-0 left-0 right-0 bg-primary-600 text-white py-3 px-4 flex items-center justify-center gap-3 md:hidden z-50 shadow-lg">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+  </svg>
+  <a href="tel:+15617820848" class="font-bold">Tap to Call: (561) 782-0848</a>
+</div>

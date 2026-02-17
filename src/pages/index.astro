@@ -5,23 +5,27 @@ import { siteConfig } from '../config/site';
 const faqs = [
   {
     question: `How much does a concrete driveway cost in ${siteConfig.address.city}?`,
-    answer: `Concrete driveway costs in ${siteConfig.address.city} typically range from $8-$18 per square foot, depending on size, thickness, and finish. A standard 400 sq ft driveway costs $3,200-$7,200. Stamped or decorative concrete costs more. Call ${siteConfig.phone} for a free estimate.`
+    answer: `Concrete driveway costs in ${siteConfig.address.city} and Palm Beach County typically range from $8-$18 per square foot, depending on size, thickness, decorative options, and site preparation needs. A standard 400-600 sq ft residential driveway generally costs between $4,000-$10,000. Stamped concrete or decorative finishes add $3-6 per square foot. We provide free, detailed estimates so you know exactly what to expect. Call ${siteConfig.phone} today for your personalized quote.`
   },
   {
-    question: "How long does concrete take to cure?",
-    answer: "Concrete reaches about 70% strength in 7 days and full strength in 28 days. You can typically walk on new concrete after 24-48 hours, but should wait 7 days before driving on a new driveway."
+    question: "How long does concrete take to cure in Florida's climate?",
+    answer: "In South Florida's warm, humid climate, concrete curing times are slightly faster than northern regions. You can typically walk on new concrete after 24-48 hours. Light vehicle traffic is safe after 7 days. Full curing and maximum strength (about 4,000 PSI) is achieved at 28 days. We recommend waiting the full 7 days before parking vehicles on new driveways. Our team will provide specific guidance based on your project and current weather conditions."
   },
   {
-    question: `What areas do you serve near ${siteConfig.address.city}?`,
-    answer: `We serve all of ${siteConfig.county} including ${siteConfig.serviceAreas.map(a => a.name).join(', ')}, and surrounding areas.`
+    question: `What areas near ${siteConfig.address.city} do you serve?`,
+    answer: `We proudly serve all of ${siteConfig.county} and surrounding areas including ${siteConfig.serviceAreas.slice(0, 10).map(a => a.name).join(', ')}, and more. Our crews are local to the area and understand the unique soil conditions, climate considerations, and permitting requirements throughout South Florida. No project is too far — call us to confirm service in your area.`
   },
   {
-    question: "Do you offer free estimates?",
-    answer: `Yes! We offer free, no-obligation estimates for all concrete projects. Call ${siteConfig.phone} or fill out our online form to schedule your free consultation.`
+    question: "Do you offer financing for concrete projects?",
+    answer: `Yes! We understand that concrete projects are significant investments. We offer flexible payment options and can work with you on payment plans for qualifying projects. Many homeowners also use home equity lines or home improvement loans. Contact us at ${siteConfig.phone} to discuss payment options that work for your budget.`
   },
   {
     question: "How thick should a concrete driveway be?",
-    answer: "A residential concrete driveway should be 4 inches thick for regular vehicles. For heavier vehicles like RVs or trucks, we recommend 5-6 inches. All our driveways use 4,000 PSI concrete for maximum durability."
+    answer: "For residential driveways in Palm Beach County, we recommend a minimum of 4 inches thickness for standard passenger vehicles. If you have heavier vehicles like RVs, boats on trailers, or trucks, we recommend 5-6 inches with additional reinforcement. All our driveways use 4,000 PSI concrete with fiber mesh or rebar reinforcement to handle Florida's expansive soils and prevent cracking."
+  },
+  {
+    question: "What's the best time of year for concrete work in Florida?",
+    answer: "In South Florida, we can pour concrete year-round thanks to our mild winters. However, the ideal times are late fall through early spring (October-April) when temperatures are cooler and there's less daily rainfall. During summer months, we schedule pours for early morning to avoid the hottest parts of the day. Regardless of season, our experienced crews know how to adjust mix designs and curing methods for optimal results."
   }
 ];
 
@@ -37,136 +41,235 @@ const faqSchema = {
     }
   }))
 };
+
+const testimonials = [
+  {
+    name: "Michael R.",
+    location: "Wellington, FL",
+    text: "Outstanding work on our driveway! The stamped concrete looks like real pavers but at half the cost. The crew was professional, clean, and finished ahead of schedule. Highly recommend to anyone in Palm Beach County.",
+    rating: 5
+  },
+  {
+    name: "Jennifer S.",
+    location: "Royal Palm Beach, FL",
+    text: "We had a large patio installed for our backyard. From the initial estimate to the final walkthrough, everything was handled professionally. The finished product exceeded our expectations. Our neighbors keep asking who did the work!",
+    rating: 5
+  },
+  {
+    name: "David & Lisa M.",
+    location: "West Palm Beach, FL",
+    text: "After getting quotes from 5 different companies, we chose RPB Concrete for our pool deck. Best decision we made. Fair pricing, excellent communication, and beautiful results. The crew even cleaned up better than they found it.",
+    rating: 5
+  }
+];
 ---
 
-<BaseLayout schema={[faqSchema]}>
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-navy to-navy-dark text-white py-16 md:py-24 relative overflow-hidden">
-    <div class="absolute inset-0 bg-[url('/images/hero-pattern.svg')] opacity-10"></div>
+<BaseLayout 
+  title={`${siteConfig.name} | #1 Concrete Contractors in Palm Beach County`}
+  description={`Premium concrete contractor in ${siteConfig.address.city}, FL. Expert driveways, patios, slabs & stamped concrete. Licensed, insured & 5-star rated. Free estimates! Call ${siteConfig.phone}`}
+  schema={[faqSchema]}
+>
+  <!-- Hero Section with Form Above Fold -->
+  <section class="relative bg-gradient-to-br from-slate via-slate-light to-slate-dark text-white py-12 md:py-20 overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.4\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    </div>
+    
     <div class="container relative">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Left: Content -->
         <div>
-          <div class="inline-flex items-center gap-2 bg-primary/20 border border-primary/30 px-4 py-2 rounded-full text-sm text-primary mb-6">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          <!-- Trust Badge -->
+          <div class="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 px-4 py-2 rounded-full text-sm mb-6">
+            <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
             </svg>
-            Trusted Local Concrete Contractors
+            <span>Licensed & Insured Concrete Contractors</span>
           </div>
           
-          <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
-            {siteConfig.address.city}'s Premier <span class="text-primary">Concrete Contractors</span>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            Premium <span class="text-primary">Concrete Services</span> in {siteConfig.address.city}
           </h1>
           
-          <p class="text-lg text-gray-300 mb-8 leading-relaxed">
-            Professional concrete services for driveways, patios, slabs, and stamped concrete. Serving {siteConfig.county} with quality craftsmanship and exceptional results.
+          <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+            Transform your property with expert concrete driveways, patios, slabs, and stunning stamped concrete designs. Serving {siteConfig.county} with quality craftsmanship and guaranteed results for over a decade.
           </p>
           
-          <div class="flex flex-wrap gap-4 mb-8">
-            <div class="flex items-center gap-2 text-sm">
-              <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-              </svg>
-              Licensed & Insured
+          <!-- Trust Indicators -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="text-center p-3 bg-white/10 rounded-lg">
+              <div class="text-2xl font-bold text-primary">500+</div>
+              <div class="text-sm text-gray-400">Projects Done</div>
             </div>
-            <div class="flex items-center gap-2 text-sm">
-              <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-              </svg>
-              Free Estimates
+            <div class="text-center p-3 bg-white/10 rounded-lg">
+              <div class="text-2xl font-bold text-primary">15+</div>
+              <div class="text-sm text-gray-400">Years Exp.</div>
             </div>
-            <div class="flex items-center gap-2 text-sm">
-              <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-              </svg>
-              Quality Guaranteed
+            <div class="text-center p-3 bg-white/10 rounded-lg">
+              <div class="text-2xl font-bold text-primary">5.0</div>
+              <div class="text-sm text-gray-400">Star Rating</div>
+            </div>
+            <div class="text-center p-3 bg-white/10 rounded-lg">
+              <div class="text-2xl font-bold text-primary">100%</div>
+              <div class="text-sm text-gray-400">Satisfaction</div>
             </div>
           </div>
           
-          <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-primary text-xl px-8 py-4">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <!-- Phone CTA #1 -->
+          <a href={`tel:${siteConfig.phoneRaw}`} class="inline-flex items-center gap-3 btn btn-gold text-xl px-8 py-4">
+            <svg class="w-6 h-6 animate-phone" fill="currentColor" viewBox="0 0 24 24">
               <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
             </svg>
             Call {siteConfig.phone}
           </a>
+          <p class="text-sm text-gray-400 mt-3">Free estimates • Same-day response</p>
         </div>
         
-        <div class="bg-white rounded-xl p-8 shadow-2xl text-gray-900">
-          <h3 class="text-2xl font-bold text-center mb-2">Get Your Free Quote</h3>
-          <p class="text-gray-600 text-center mb-6">No obligation • Response within 24 hours</p>
+        <!-- Right: Quote Form (Above Fold) -->
+        <div class="bg-white rounded-2xl p-8 shadow-2xl text-gray-900">
+          <div class="text-center mb-6">
+            <h2 class="text-2xl font-bold text-slate mb-2">Get Your FREE Quote</h2>
+            <p class="text-gray-600">No obligation • Response within 24 hours</p>
+          </div>
           
-          <!-- GHL Form Embed - Update form URL in site.ts when form is created -->
-          {siteConfig.ghlFormUrl && !siteConfig.ghlFormUrl.includes('PLACEHOLDER') ? (
-            <iframe 
-              src={siteConfig.ghlFormUrl}
-              style="border:none; width:100%; min-height:380px;"
-              scrolling="no"
-              id="ghl-quote-form"
-              title="Free Quote Form">
-            </iframe>
-          ) : (
-            <form class="space-y-4" action="https://services.leadconnectorhq.com/hooks/formSubmit" method="POST">
-              <input type="hidden" name="location_id" value="OsNgWuy8oZzLbp5BXbnD">
-              <input type="hidden" name="form_name" value="Royal Palm Beach Concrete Quote">
-              <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition">
-              <input type="tel" name="phone" placeholder="Phone Number" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition">
-              <input type="email" name="email" placeholder="Email Address" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition">
-              <select name="service" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition">
-                <option value="">Select a Service</option>
+          <form class="space-y-4" action="https://services.leadconnectorhq.com/hooks/formSubmit" method="POST">
+            <input type="hidden" name="location_id" value="OsNgWuy8oZzLbp5BXbnD">
+            <input type="hidden" name="form_name" value="Royal Palm Beach Concrete Quote">
+            
+            <div>
+              <input 
+                type="text" 
+                name="name" 
+                placeholder="Your Full Name *" 
+                required 
+                class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
+              >
+            </div>
+            
+            <div>
+              <input 
+                type="tel" 
+                name="phone" 
+                placeholder="Phone Number *" 
+                required 
+                class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
+              >
+            </div>
+            
+            <div>
+              <input 
+                type="email" 
+                name="email" 
+                placeholder="Email Address" 
+                class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
+              >
+            </div>
+            
+            <div>
+              <select 
+                name="service" 
+                class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition bg-white"
+              >
+                <option value="">Select Service Needed</option>
                 {siteConfig.services.map(service => (
                   <option value={service.slug}>{service.name}</option>
                 ))}
+                <option value="other">Other / Multiple Services</option>
               </select>
-              <textarea name="message" rows="3" placeholder="Tell us about your project" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition resize-none"></textarea>
-              <button type="submit" class="btn btn-primary w-full">Get Free Estimate</button>
-            </form>
-          )}
-          <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+            </div>
+            
+            <div>
+              <textarea 
+                name="message" 
+                rows="3" 
+                placeholder="Tell us about your project (size, timeline, etc.)" 
+                class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition resize-none"
+              ></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-gold w-full text-lg py-4 pulse-gold">
+              Get My Free Estimate →
+            </button>
+          </form>
           
-          <div class="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-3 text-center text-sm text-amber-800">
-            <strong>Limited Availability:</strong> We're booking fast. Request your quote today!
+          <!-- Urgency Message -->
+          <div class="mt-4 bg-sand border border-primary/30 rounded-lg p-3 text-center">
+            <p class="text-sm text-slate">
+              <span class="font-bold text-primary">⚡ Limited Availability:</span> 
+              We're booking 2-3 weeks out. Request your quote today!
+            </p>
+          </div>
+          
+          <!-- Trust Badges Under Form -->
+          <div class="mt-6 flex justify-center gap-6 text-sm text-gray-500">
+            <span class="flex items-center gap-1">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              No Spam
+            </span>
+            <span class="flex items-center gap-1">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              No Obligation
+            </span>
+            <span class="flex items-center gap-1">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              100% Free
+            </span>
           </div>
         </div>
       </div>
     </div>
   </section>
   
-  <!-- Trust Bar -->
-  <section class="bg-gray-50 py-8 border-b">
+  <!-- Trust Bar with Phone #2 -->
+  <section class="bg-sand py-6 border-b border-primary/20">
     <div class="container">
-      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
         <div class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center">
+          <div class="w-12 h-12 bg-slate rounded-full flex items-center justify-center">
+            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-bold text-slate">Licensed & Insured</div>
+            <div class="text-sm text-gray-500">Full coverage protection</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-slate rounded-full flex items-center justify-center">
             <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
             </svg>
           </div>
           <div>
-            <div class="font-semibold">5-Star Rated</div>
-            <div class="text-sm text-gray-500">Customer Reviews</div>
+            <div class="font-bold text-slate">5-Star Rated</div>
+            <div class="text-sm text-gray-500">Verified reviews</div>
           </div>
         </div>
         <div class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center">
-            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
-            </svg>
-          </div>
-          <div>
-            <div class="font-semibold">Fully Insured</div>
-            <div class="text-sm text-gray-500">Licensed Contractor</div>
-          </div>
-        </div>
-        <div class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center">
+          <div class="w-12 h-12 bg-slate rounded-full flex items-center justify-center">
             <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
             </svg>
           </div>
           <div>
-            <div class="font-semibold">Quality Work</div>
-            <div class="text-sm text-gray-500">Satisfaction Guaranteed</div>
+            <div class="font-bold text-slate">Satisfaction Guaranteed</div>
+            <div class="text-sm text-gray-500">We stand behind our work</div>
           </div>
         </div>
+        <a href={`tel:${siteConfig.phoneRaw}`} class="flex items-center gap-3 bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          <span class="font-bold">{siteConfig.phone}</span>
+        </a>
       </div>
     </div>
   </section>
@@ -175,121 +278,295 @@ const faqSchema = {
   <section class="py-16 md:py-24" id="services">
     <div class="container">
       <div class="text-center mb-12">
-        <h2 class="section-title">Our Concrete Services</h2>
-        <p class="section-subtitle">Professional concrete solutions for residential and commercial properties in {siteConfig.county}.</p>
+        <span class="text-primary font-semibold uppercase tracking-wider text-sm">What We Do</span>
+        <h2 class="section-title mt-2">Premium Concrete Services in {siteConfig.county}</h2>
+        <p class="section-subtitle">From driveways to decorative patios, we deliver exceptional concrete work that stands the test of time in Florida's demanding climate.</p>
       </div>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {siteConfig.services.map(service => (
-          <a href={`/${service.slug}/`} class="group bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1">
-            <div class="h-48 overflow-hidden">
+      <div class="grid md:grid-cols-2 gap-8">
+        {siteConfig.services.map((service, i) => (
+          <a href={`/${service.slug}/`} class="group card card-hover">
+            <div class="h-56 overflow-hidden">
               <img 
                 src={`/images/${service.slug === "concrete-driveways" ? "driveway-bighouse" : service.slug === "concrete-patios" ? "concrete-patio" : service.slug === "concrete-slabs" ? "concrete-slab" : "stamped-driveway"}.webp`} 
-                alt={`${service.name} in Royal Palm Beach FL`} 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
-                loading="lazy"
+                alt={`${service.name} in ${siteConfig.address.city} FL`} 
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                loading={i < 2 ? "eager" : "lazy"}
               />
             </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{service.name}</h3>
-              <p class="text-gray-600 text-sm">{service.description}</p>
+            <div class="p-8">
+              <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">{service.name}</h3>
+              <p class="text-gray-600 mb-4">{service.description}</p>
+              <span class="text-primary font-semibold flex items-center gap-2">
+                Learn More
+                <svg class="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
             </div>
           </a>
         ))}
+      </div>
+      
+      <!-- Phone CTA #3 -->
+      <div class="text-center mt-12">
+        <p class="text-gray-600 mb-4">Not sure which service you need? We'll help you figure it out.</p>
+        <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-primary text-lg">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          Call {siteConfig.phone} for Expert Advice
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Why Choose Us (Local Focus) -->
+  <section class="py-16 md:py-24 bg-slate text-white">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-primary font-semibold uppercase tracking-wider text-sm">Why Choose Us</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-6">Palm Beach County's Trusted Concrete Experts</h2>
+          
+          <p class="text-gray-300 text-lg mb-8 leading-relaxed">
+            When you hire {siteConfig.name}, you're getting more than just a concrete contractor. You're partnering with local experts who understand the unique challenges of building in South Florida — from our sandy soils to our subtropical climate.
+          </p>
+          
+          <p class="text-gray-300 mb-8 leading-relaxed">
+            We've completed over 500 projects throughout {siteConfig.county}, from luxury estates in Wellington and Palm Beach to family homes in Royal Palm Beach and Greenacres. Our team knows the local building codes, HOA requirements, and what it takes to create concrete work that lasts for decades in Florida's heat and humidity.
+          </p>
+          
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg mb-1">Local Knowledge</h4>
+                <p class="text-gray-400">We understand Palm Beach County's soil conditions, climate, and permitting requirements inside and out.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg mb-1">Transparent Pricing</h4>
+                <p class="text-gray-400">Detailed quotes with no hidden fees. You'll know exactly what you're paying for before we start.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg mb-1">Quality Materials</h4>
+                <p class="text-gray-400">We use only 4,000 PSI concrete with proper reinforcement, built to handle Florida's demanding conditions.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Phone CTA #4 -->
+          <div class="mt-8">
+            <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-gold text-lg">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              {siteConfig.phone}
+            </a>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4">
+          <img 
+            src="/images/driveway-bighouse.webp" 
+            alt="Concrete driveway in Royal Palm Beach FL" 
+            class="rounded-xl shadow-lg col-span-2 h-64 object-cover"
+            loading="lazy"
+          />
+          <img 
+            src="/images/concrete-patio.webp" 
+            alt="Concrete patio installation Palm Beach County" 
+            class="rounded-xl shadow-lg h-48 object-cover"
+            loading="lazy"
+          />
+          <img 
+            src="/images/stamped-driveway.webp" 
+            alt="Stamped concrete in Wellington FL" 
+            class="rounded-xl shadow-lg h-48 object-cover"
+            loading="lazy"
+          />
+        </div>
       </div>
     </div>
   </section>
   
   <!-- Process Section -->
-  <section class="py-16 md:py-24 bg-gray-50">
+  <section class="py-16 md:py-24">
     <div class="container">
       <div class="text-center mb-12">
-        <h2 class="section-title">How It Works</h2>
-        <p class="section-subtitle">Getting your concrete project done is easy with our simple 3-step process.</p>
+        <span class="text-primary font-semibold uppercase tracking-wider text-sm">Our Process</span>
+        <h2 class="section-title mt-2">How We Work</h2>
+        <p class="section-subtitle">Getting your concrete project done is simple. Here's what to expect when you work with us.</p>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center p-8 bg-white rounded-xl shadow-sm">
-          <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">1</div>
-          <h3 class="text-xl font-bold mb-3">Get a Free Quote</h3>
-          <p class="text-gray-600">Call us or fill out our form. We'll discuss your project and schedule a free on-site estimate.</p>
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-20 h-20 bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-lg">1</div>
+          <h3 class="text-xl font-bold mb-3">Free Consultation</h3>
+          <p class="text-gray-600">Call us or fill out our form. We'll discuss your project goals and schedule a free on-site estimate at your convenience.</p>
         </div>
-        <div class="text-center p-8 bg-white rounded-xl shadow-sm">
-          <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">2</div>
-          <h3 class="text-xl font-bold mb-3">Approve the Plan</h3>
-          <p class="text-gray-600">We'll present a detailed proposal with clear pricing. No hidden fees, no surprises.</p>
+        
+        <div class="text-center">
+          <div class="w-20 h-20 bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-lg">2</div>
+          <h3 class="text-xl font-bold mb-3">Detailed Quote</h3>
+          <p class="text-gray-600">We'll visit your property, assess the site conditions, and provide a comprehensive written estimate with clear pricing.</p>
         </div>
-        <div class="text-center p-8 bg-white rounded-xl shadow-sm">
-          <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">3</div>
-          <h3 class="text-xl font-bold mb-3">We Get to Work</h3>
-          <p class="text-gray-600">Our expert crew completes your project on time and on budget. Quality guaranteed.</p>
+        
+        <div class="text-center">
+          <div class="w-20 h-20 bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-lg">3</div>
+          <h3 class="text-xl font-bold mb-3">Expert Installation</h3>
+          <p class="text-gray-600">Our experienced crew handles everything — from site prep and forming to pouring and finishing. Quality at every step.</p>
         </div>
+        
+        <div class="text-center">
+          <div class="w-20 h-20 bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-lg">4</div>
+          <h3 class="text-xl font-bold mb-3">Final Walkthrough</h3>
+          <p class="text-gray-600">We ensure you're 100% satisfied with the results. We also provide care instructions to maximize the lifespan of your new concrete.</p>
+        </div>
+      </div>
+      
+      <!-- Phone CTA #5 -->
+      <div class="text-center mt-12 p-8 bg-sand rounded-2xl">
+        <h3 class="text-2xl font-bold mb-4">Ready to Get Started?</h3>
+        <p class="text-gray-600 mb-6 max-w-2xl mx-auto">Most projects can be scheduled within 2-3 weeks. The sooner you call, the sooner we can transform your property.</p>
+        <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-primary text-lg">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          Call {siteConfig.phone} Now
+        </a>
       </div>
     </div>
   </section>
   
-  <!-- Service Areas -->
+  <!-- Testimonials -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12">
+        <span class="text-primary font-semibold uppercase tracking-wider text-sm">Testimonials</span>
+        <h2 class="section-title mt-2">What Our Customers Say</h2>
+        <p class="section-subtitle">Don't just take our word for it. Here's what homeowners throughout {siteConfig.county} have to say about our work.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        {testimonials.map(testimonial => (
+          <div class="card p-8">
+            <div class="flex items-center gap-1 text-primary mb-4">
+              {[...Array(testimonial.rating)].map(() => (
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              ))}
+            </div>
+            <p class="text-gray-700 mb-6 italic">"{testimonial.text}"</p>
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                <span class="text-primary font-bold text-lg">{testimonial.name.charAt(0)}</span>
+              </div>
+              <div>
+                <div class="font-bold text-slate">{testimonial.name}</div>
+                <div class="text-sm text-gray-500">{testimonial.location}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Service Areas with Local Content -->
   <section class="py-16 md:py-24">
     <div class="container">
-      <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <div class="grid lg:grid-cols-2 gap-12">
         <div>
-          <h2 class="section-title text-left mb-6">Areas We Serve</h2>
-          <p class="text-gray-600 mb-8">We're proud to serve {siteConfig.address.city} and communities throughout {siteConfig.county}. Our team of experienced concrete contractors brings quality workmanship to every project.</p>
+          <span class="text-primary font-semibold uppercase tracking-wider text-sm">Service Areas</span>
+          <h2 class="section-title text-left mt-2 mb-6">Serving All of {siteConfig.county}</h2>
           
-          <div class="grid grid-cols-2 gap-3">
-            {siteConfig.serviceAreas.map(area => (
-              <a href={`/locations/${area.slug}/`} class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-primary hover:text-white transition-colors group">
-                <svg class="w-4 h-4 text-primary group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            From the equestrian estates of Wellington to the beachfront properties of Jupiter, from the established neighborhoods of West Palm Beach to the growing communities of Royal Palm Beach — we bring expert concrete services to every corner of Palm Beach County and beyond.
+          </p>
+          
+          <p class="text-gray-600 mb-8 leading-relaxed">
+            Our central location in Royal Palm Beach allows us to serve the entire region efficiently. We're familiar with local HOA requirements, city permitting processes, and the specific challenges of building in each community. Whether you're near the Intracoastal, in a gated community, or on a sprawling acreage lot in Loxahatchee, we've got you covered.
+          </p>
+          
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {siteConfig.serviceAreas.slice(0, 12).map(area => (
+              <a href={`/locations/${area.slug}/`} class="flex items-center gap-2 p-3 bg-sand rounded-lg hover:bg-primary hover:text-white transition-colors group text-sm">
+                <svg class="w-4 h-4 text-primary group-hover:text-white flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
                 </svg>
                 {area.name}
               </a>
             ))}
           </div>
           
-          <a href="/locations/" class="inline-block mt-6 text-primary font-semibold hover:underline">View All Service Areas →</a>
+          <a href="/locations/" class="inline-block mt-6 text-primary font-semibold hover:text-primary-dark transition">
+            View All {siteConfig.serviceAreas.length} Service Areas →
+          </a>
         </div>
         
-        <div class="bg-gray-100 rounded-xl p-8">
-          <h3 class="text-xl font-bold mb-4">Why Choose {siteConfig.shortName}?</h3>
-          <ul class="space-y-4">
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+        <div class="bg-slate rounded-2xl p-8 text-white">
+          <h3 class="text-2xl font-bold mb-6 text-primary">Local Landmarks We've Worked Near</h3>
+          
+          <p class="text-gray-300 mb-6">
+            Our work can be found throughout the region, from neighborhoods adjacent to the Royal Palm Beach Commons to properties near Wellington Green Mall. We've installed driveways in communities overlooking the Wellington Environmental Preserve and patios in homes just minutes from Downtown West Palm Beach's Clematis Street.
+          </p>
+          
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
               </svg>
-              <div>
-                <strong class="block">Local Expertise</strong>
-                <span class="text-gray-600 text-sm">We know {siteConfig.county}'s soil conditions and climate requirements.</span>
-              </div>
+              <span>Projects near Palm Beach International Airport (PBI)</span>
             </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
               </svg>
-              <div>
-                <strong class="block">Quality Materials</strong>
-                <span class="text-gray-600 text-sm">We use 4,000 PSI concrete and proper reinforcement on every job.</span>
-              </div>
+              <span>Installations near Roger Dean Stadium</span>
             </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
               </svg>
-              <div>
-                <strong class="block">Transparent Pricing</strong>
-                <span class="text-gray-600 text-sm">Clear quotes with no hidden fees. Know exactly what you'll pay.</span>
-              </div>
+              <span>Pool decks near International Polo Club</span>
             </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
               </svg>
-              <div>
-                <strong class="block">Satisfaction Guaranteed</strong>
-                <span class="text-gray-600 text-sm">We stand behind our work with a quality guarantee.</span>
-              </div>
+              <span>Driveways in communities near Okeeheelee Park</span>
             </li>
           </ul>
+          
+          <!-- Phone CTA #6 -->
+          <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-gold w-full justify-center text-lg">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            Call {siteConfig.phone}
+          </a>
         </div>
       </div>
     </div>
@@ -299,44 +576,59 @@ const faqSchema = {
   <section class="py-16 md:py-24 bg-gray-50">
     <div class="container">
       <div class="text-center mb-12">
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-subtitle">Get answers to common questions about our concrete services.</p>
+        <span class="text-primary font-semibold uppercase tracking-wider text-sm">FAQ</span>
+        <h2 class="section-title mt-2">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Get answers to common questions about our concrete services in {siteConfig.county}.</p>
       </div>
       
-      <div class="max-w-3xl mx-auto space-y-4">
+      <div class="max-w-4xl mx-auto space-y-4">
         {faqs.map((faq, i) => (
-          <details class="bg-white rounded-xl shadow-sm border border-gray-100 group" open={i === 0}>
+          <details class="card group" open={i === 0}>
             <summary class="p-6 font-semibold cursor-pointer flex items-center justify-between gap-4 list-none">
-              {faq.question}
-              <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span class="text-lg">{faq.question}</span>
+              <svg class="w-5 h-5 text-primary group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
               </svg>
             </summary>
-            <div class="px-6 pb-6 text-gray-600">
+            <div class="px-6 pb-6 text-gray-600 leading-relaxed">
               {faq.answer}
             </div>
           </details>
         ))}
       </div>
+      
+      <div class="text-center mt-8">
+        <p class="text-gray-600">Have more questions? We're happy to help.</p>
+        <a href={`tel:${siteConfig.phoneRaw}`} class="text-primary font-bold text-lg hover:text-primary-dark transition">
+          Call {siteConfig.phone}
+        </a>
+      </div>
     </div>
   </section>
   
-  <!-- CTA Section -->
+  <!-- Final CTA Section with Phone #7 -->
   <section class="bg-gradient-to-r from-primary to-primary-dark py-16 md:py-20 text-white text-center">
     <div class="container">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Concrete Project?</h2>
-      <p class="text-xl opacity-90 mb-8 max-w-2xl mx-auto">Get a free, no-obligation estimate today. Our team is ready to help bring your vision to life.</p>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Ready to Transform Your Property?</h2>
+      <p class="text-xl opacity-90 mb-8 max-w-3xl mx-auto">
+        Get a free, no-obligation estimate today. Join hundreds of satisfied homeowners throughout {siteConfig.county} who trust {siteConfig.shortName} for their concrete needs.
+      </p>
+      
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-white text-lg px-8">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-white text-lg px-8 py-4">
+          <svg class="w-6 h-6 animate-phone" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
           </svg>
           Call {siteConfig.phone}
         </a>
-        <a href="/contact/" class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8">
-          Request a Quote Online
+        <a href="/contact/" class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4">
+          Request Quote Online
         </a>
       </div>
+      
+      <p class="mt-6 text-white/80">
+        <strong>Hours:</strong> Mon-Fri {siteConfig.hours.weekdays} | Sat {siteConfig.hours.saturday}
+      </p>
     </div>
   </section>
 </BaseLayout>

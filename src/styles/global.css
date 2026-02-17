@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -26,7 +28,7 @@
   }
   
   .btn-secondary {
-    @apply bg-navy text-white hover:bg-navy-light hover:-translate-y-0.5;
+    @apply bg-slate text-white hover:bg-slate-light hover:-translate-y-0.5;
   }
   
   .btn-outline {
@@ -34,15 +36,27 @@
   }
   
   .btn-white {
-    @apply bg-white text-primary hover:bg-gray-100 hover:-translate-y-0.5;
+    @apply bg-white text-primary hover:bg-sand hover:-translate-y-0.5;
+  }
+  
+  .btn-gold {
+    @apply bg-gradient-to-r from-primary to-primary-light text-white hover:from-primary-dark hover:to-primary shadow-xl;
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-gray-900 mb-4;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4;
   }
   
   .section-subtitle {
-    @apply text-lg text-gray-600 max-w-2xl mx-auto;
+    @apply text-lg md:text-xl text-gray-600 max-w-3xl mx-auto;
+  }
+  
+  .card {
+    @apply bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-2xl hover:-translate-y-1 transition-all duration-300;
   }
 }
 
@@ -50,15 +64,59 @@
   .text-balance {
     text-wrap: balance;
   }
+  
+  .gradient-gold {
+    @apply bg-gradient-to-r from-primary via-primary-light to-primary;
+  }
+  
+  .gradient-dark {
+    @apply bg-gradient-to-br from-slate via-slate-light to-slate-dark;
+  }
 }
 
-/* Custom animations */
+/* Phone ring animation */
 @keyframes phone-ring {
   0%, 100% { transform: rotate(0); }
-  25% { transform: rotate(-10deg); }
-  75% { transform: rotate(10deg); }
+  10% { transform: rotate(-15deg); }
+  20% { transform: rotate(15deg); }
+  30% { transform: rotate(-15deg); }
+  40% { transform: rotate(15deg); }
+  50% { transform: rotate(0); }
 }
 
 .animate-phone {
-  animation: phone-ring 1s ease infinite;
+  animation: phone-ring 2s ease-in-out infinite;
+}
+
+/* Pulse animation for urgency */
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(180, 83, 9, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(180, 83, 9, 0); }
+}
+
+.pulse-gold {
+  animation: pulse-gold 2s infinite;
+}
+
+/* Sticky mobile CTA */
+.sticky-cta {
+  @apply fixed bottom-0 left-0 right-0 z-50 bg-slate p-3 md:hidden shadow-2xl;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b45309;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #92400e;
 }

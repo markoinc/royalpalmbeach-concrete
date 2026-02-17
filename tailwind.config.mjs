@@ -5,18 +5,24 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#f97316',
-          dark: '#ea580c',
-          light: '#fb923c',
+          DEFAULT: '#b45309',
+          dark: '#92400e',
+          light: '#d97706',
         },
-        navy: {
-          DEFAULT: '#1e3a5f',
-          light: '#2d4a6c',
-          dark: '#0f2744',
+        slate: {
+          DEFAULT: '#1e293b',
+          light: '#334155',
+          dark: '#0f172a',
+        },
+        sand: {
+          DEFAULT: '#fef3c7',
+          dark: '#fde68a',
+          light: '#fffbeb',
         },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Playfair Display', 'Georgia', 'serif'],
       },
     },
   },

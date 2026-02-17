@@ -1,73 +1,90 @@
-// Site Configuration for Royal Palm Beach Concrete Co.
 export const siteConfig = {
-  name: "Royal Palm Beach Concrete Co.",
-  shortName: "RPB Concrete Co.",
-  domain: "royalpalmbeachconcrete.com",
-  url: "https://royalpalmbeachconcrete.com",
+  name: "Royal Palm Beach Concrete Co",
+  shortName: "RPB Concrete",
+  tagline: "Premium Concrete Contractors in Palm Beach County",
   phone: "(561) 782-0848",
-  phoneRaw: "+15617820848",
-  email: "info@royalpalmbeachconcrete.com",
+  phoneRaw: "5617820848",
+  email: "info@royalpalmbeachconcreteco.com",
+  domain: "royalpalmbeachconcreteco.com",
+  url: "https://royalpalmbeachconcreteco.com",
+  
   address: {
-    street: "Royal Palm Beach, FL",
+    street: "",
     city: "Royal Palm Beach",
     state: "FL",
-    stateFullName: "Florida",
     zip: "33411",
-    country: "US",
+    full: "Royal Palm Beach, FL 33411",
   },
+  
+  county: "Palm Beach County",
+  
   geo: {
-    latitude: 26.7084,
-    longitude: -80.2306,
+    lat: 26.7084,
+    lng: -80.2306,
   },
+  
   hours: {
     weekdays: "7:00 AM - 6:00 PM",
     saturday: "8:00 AM - 4:00 PM",
     sunday: "Closed",
-    schema: ["Mo-Fr 07:00-18:00", "Sa 08:00-16:00"],
   },
+  
   social: {
-    google: "",
     facebook: "",
     instagram: "",
+    google: "",
   },
-  meta: {
-    title: "Trusted Royal Palm Beach Concrete Contractors | Driveways, Slabs, Patios",
-    description: "Need a reliable concrete contractor in Royal Palm Beach? Count on Royal Palm Beach Concrete Co for top-quality driveways, patios, slabs, and more. Call 561-782-0848 today for a free estimate!",
-    keywords: "concrete contractors Royal Palm Beach FL, concrete driveway, concrete patio, concrete slabs, stamped concrete, Palm Beach County concrete",
-  },
+  
+  ghlFormUrl: "",
+  
   services: [
     {
       name: "Concrete Driveways",
       slug: "concrete-driveways",
-      description: "Custom concrete driveway installation and repair. Standard, stamped, and decorative options.",
+      description: "Durable, beautiful driveways built to last for decades. Stamped, stained, or traditional finishes available.",
     },
     {
       name: "Concrete Patios",
       slug: "concrete-patios",
-      description: "Beautiful concrete patios for outdoor living. Pool decks, entertainment areas, and more.",
+      description: "Transform your backyard with custom concrete patios perfect for Florida outdoor living.",
     },
     {
       name: "Concrete Slabs",
       slug: "concrete-slabs",
-      description: "Foundation slabs, garage floors, shed pads, and commercial concrete slabs.",
+      description: "Strong foundations for sheds, garages, pool decks, and more. Properly reinforced for Florida soil.",
     },
     {
       name: "Stamped Concrete",
       slug: "stamped-concrete",
-      description: "Decorative stamped concrete in patterns that mimic stone, brick, tile, and wood.",
+      description: "Designer concrete that mimics stone, brick, or tile at a fraction of the cost.",
     },
   ],
+  
   serviceAreas: [
-    { name: "Royal Palm Beach", slug: "royal-palm-beach" },
+    { name: "Royal Palm Beach", slug: "royal-palm-beach", isPrimary: true },
     { name: "Wellington", slug: "wellington" },
     { name: "West Palm Beach", slug: "west-palm-beach" },
     { name: "Palm Beach Gardens", slug: "palm-beach-gardens" },
-    { name: "Lake Worth", slug: "lake-worth" },
-    { name: "Greenacres", slug: "greenacres" },
-    { name: "Loxahatchee", slug: "loxahatchee" },
     { name: "Jupiter", slug: "jupiter" },
+    { name: "Boynton Beach", slug: "boynton-beach" },
+    { name: "Lake Worth Beach", slug: "lake-worth-beach" },
+    { name: "Delray Beach", slug: "delray-beach" },
+    { name: "Boca Raton", slug: "boca-raton" },
+    { name: "Greenacres", slug: "greenacres" },
+    { name: "Riviera Beach", slug: "riviera-beach" },
+    { name: "Palm Springs", slug: "palm-springs-fl" },
+    { name: "Loxahatchee", slug: "loxahatchee" },
+    { name: "Palm Beach", slug: "palm-beach" },
+    { name: "Stuart", slug: "stuart" },
+    { name: "Port St. Lucie", slug: "port-st-lucie" },
+    { name: "Coconut Creek", slug: "coconut-creek" },
+    { name: "Coral Springs", slug: "coral-springs" },
+    { name: "Parkland", slug: "parkland" },
+    { name: "Pompano Beach", slug: "pompano-beach" },
+    { name: "Lantana", slug: "lantana" },
+    { name: "Lake Park", slug: "lake-park" },
+    { name: "North Palm Beach", slug: "north-palm-beach" },
+    { name: "Juno Beach", slug: "juno-beach" },
+    { name: "Tequesta", slug: "tequesta" },
   ],
-  county: "Palm Beach County",
-  // GHL Form embed URL - update with actual form ID when created
-  ghlFormUrl: "https://api.leadconnectorhq.com/widget/survey/PLACEHOLDER_FORM_ID",
 };

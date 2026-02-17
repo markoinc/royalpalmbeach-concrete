@@ -2,18 +2,37 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../config/site';
 
+const applications = [
+  { name: "Garage Slabs", description: "Strong foundations for new garages or garage floor replacements with proper slope for drainage." },
+  { name: "Shed Foundations", description: "Level, stable bases for storage sheds, workshops, and backyard buildings." },
+  { name: "Pool Equipment Pads", description: "Reinforced concrete pads for pool pumps, filters, and heaters." },
+  { name: "AC Unit Pads", description: "Properly sized pads for HVAC equipment with proper drainage and clearance." },
+  { name: "Carport Slabs", description: "Durable concrete floors for covered parking areas and carports." },
+  { name: "Basketball Courts", description: "Flat, reinforced slabs perfect for half-court or full-court installations." },
+  { name: "RV Pads", description: "Heavy-duty concrete pads designed to support RVs, boats, and trailers." },
+  { name: "Hot Tub Pads", description: "Reinforced bases engineered to support the weight of filled hot tubs and spas." }
+];
+
 const faqs = [
   {
-    question: "How much does a concrete slab cost?",
-    answer: `Concrete slab costs in ${siteConfig.address.city} range from $6-$12 per square foot for basic slabs. A 10x10 (100 sq ft) slab costs $600-$1,200. Garage floors and larger slabs cost $4-$8 per square foot due to volume pricing.`
+    question: "How thick should a concrete slab be for a garage?",
+    answer: `For residential garages in Palm Beach County, we recommend a minimum thickness of 4 inches using 4,000 PSI concrete. For garages that will house heavier vehicles, workshops, or storage of heavy equipment, we recommend 5-6 inches with steel reinforcement. All garage slabs include a vapor barrier, proper drainage slope, and control joints to prevent cracking. Call ${siteConfig.phone} for a free assessment of your specific needs.`
   },
   {
-    question: "How thick should a concrete slab be?",
-    answer: "Standard slabs are 4 inches thick. Garage floors should be 4-6 inches. Heavy equipment pads and commercial slabs may require 6-8 inches with extra reinforcement. All our slabs include proper rebar or wire mesh reinforcement."
+    question: "How much does a concrete slab cost in Palm Beach County?",
+    answer: `Concrete slab costs in Royal Palm Beach and surrounding areas typically range from $6-$12 per square foot for basic slabs. A 10x12 shed pad costs approximately $700-$1,500, while a 20x24 garage slab costs $3,000-$7,000. Factors affecting price include site preparation, existing material removal, thickness, reinforcement, and finish type. We provide free, detailed estimates for all projects.`
   },
   {
-    question: "How long before I can use a new concrete slab?",
-    answer: "Light foot traffic is safe after 24-48 hours. Wait 7 days before placing heavy items. For maximum strength, allow 28 days before heavy loads or vehicle traffic."
+    question: "Do I need a permit for a concrete slab in Palm Beach County?",
+    answer: "Permit requirements vary by project type and location. Generally, small equipment pads under a certain size don't require permits, while larger slabs for garages, additions, or accessory structures typically do. HOA requirements may also apply. We can help guide you through the permitting process and ensure your project meets all local building codes."
+  },
+  {
+    question: "How long does a concrete slab take to cure before I can use it?",
+    answer: "You can typically walk on a new concrete slab after 24-48 hours. For light equipment like AC units or small sheds, wait 3-5 days. For heavier loads like vehicles in a garage or filled hot tubs, wait 7 days minimum. Full concrete strength (4,000 PSI) is achieved at 28 days, though most practical use can begin earlier."
+  },
+  {
+    question: "What's the difference between a slab and a foundation?",
+    answer: "A slab is a flat, horizontal concrete surface that rests on the ground, used for floors, patios, and equipment pads. A foundation is a structural element that supports a building's weight and transfers it to the ground. Foundations include footings (below-grade concrete that distributes weight) and may incorporate slabs as part of the system. We install both standard slabs and monolithic slab foundations for residential projects."
   }
 ];
 
@@ -23,110 +42,312 @@ const faqSchema = {
   "mainEntity": faqs.map(faq => ({
     "@type": "Question",
     "name": faq.question,
-    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
   }))
 };
 ---
 
 <BaseLayout 
-  title={`Concrete Slab Contractors ${siteConfig.address.city} FL`}
-  description={`Professional concrete slab installation in ${siteConfig.address.city}, FL. Foundation slabs, garage floors, shed pads. Call ${siteConfig.phone} for free estimate.`}
-  canonical={`${siteConfig.url}/concrete-slabs/`}
+  title={`Concrete Slab Contractors in ${siteConfig.address.city}, FL | ${siteConfig.name}`}
+  description={`Expert concrete slab installation in ${siteConfig.address.city} & Palm Beach County. Garage floors, shed pads, foundations & more. Licensed & insured. Free estimates! Call ${siteConfig.phone}`}
+  canonical="/concrete-slabs/"
   schema={[faqSchema]}
 >
-  <!-- Hero -->
-  <section class="bg-gradient-to-br from-navy to-navy-dark text-white py-16 md:py-24">
-    <div class="container text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">Concrete Slab Contractors</h1>
-      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">Professional concrete slab installation for foundations, garages, sheds, and more in {siteConfig.address.city}.</p>
-      <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-primary text-lg px-8">Call {siteConfig.phone}</a>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-slate via-slate-light to-slate-dark text-white py-16 md:py-24 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img src="/images/concrete-slab.webp" alt="Concrete slab installation in Palm Beach County" class="w-full h-full object-cover" />
     </div>
-  </section>
-  
-  <!-- Content -->
-  <section class="py-16 md:py-24">
-    <div class="container">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-navy mb-6">Concrete Slab Installation in {siteConfig.address.city}</h2>
+    <div class="absolute inset-0 bg-gradient-to-r from-slate/95 to-slate/80"></div>
+    
+    <div class="container relative">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 px-4 py-2 rounded-full text-sm mb-6">
+          <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          Expert Slab Contractors
+        </span>
         
-        <p class="text-gray-600 mb-6">
-          A properly poured concrete slab is the foundation of any successful construction project. Whether you need a foundation for a shed, a new garage floor, or a commercial equipment pad, our team delivers level, durable concrete slabs that last.
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          Concrete Slab Contractors in <span class="text-primary">{siteConfig.address.city}</span>
+        </h1>
+        
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+          Build on a solid foundation. From garage floors to shed pads, equipment bases to sport courts, we pour concrete slabs built to last in {siteConfig.county}'s challenging soil and climate conditions.
         </p>
         
-        <h3 class="text-2xl font-bold mb-4">Our Slab Services Include:</h3>
-        <ul class="space-y-3 mb-8">
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+        <div class="flex flex-wrap gap-4 mb-8">
+          <div class="flex items-center gap-2 text-sm bg-white/10 px-4 py-2 rounded-full">
+            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
             </svg>
-            <span><strong>Foundation Slabs</strong> - Level, reinforced slabs for buildings and additions</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+            Licensed & Insured
+          </div>
+          <div class="flex items-center gap-2 text-sm bg-white/10 px-4 py-2 rounded-full">
+            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
             </svg>
-            <span><strong>Garage Floors</strong> - Durable floors that resist oil, chemicals, and heavy loads</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+            Free Estimates
+          </div>
+          <div class="flex items-center gap-2 text-sm bg-white/10 px-4 py-2 rounded-full">
+            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
             </svg>
-            <span><strong>Shed & Outbuilding Pads</strong> - Perfect base for storage sheds and workshops</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-            </svg>
-            <span><strong>Equipment Pads</strong> - AC units, generators, hot tubs, and more</span>
-          </li>
-        </ul>
-        
-        <div class="bg-gray-50 rounded-xl p-8 mb-12">
-          <h3 class="text-2xl font-bold mb-6">Slab Pricing Guide</h3>
-          <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-white p-6 rounded-lg shadow-sm">
-              <h4 class="font-bold text-lg mb-2">Small Pad</h4>
-              <p class="text-3xl font-bold text-primary mb-2">$8 - $12/sq ft</p>
-              <p class="text-gray-600 text-sm">Under 100 sq ft</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow-sm">
-              <h4 class="font-bold text-lg mb-2">Shed/Garage</h4>
-              <p class="text-3xl font-bold text-primary mb-2">$6 - $10/sq ft</p>
-              <p class="text-gray-600 text-sm">100-500 sq ft</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow-sm">
-              <h4 class="font-bold text-lg mb-2">Large Slab</h4>
-              <p class="text-3xl font-bold text-primary mb-2">$4 - $8/sq ft</p>
-              <p class="text-gray-600 text-sm">500+ sq ft</p>
-            </div>
+            Heavy-Duty Reinforcement
           </div>
         </div>
         
-        <!-- FAQ Section -->
-        <h3 class="text-2xl font-bold mb-6">Frequently Asked Questions</h3>
-        <div class="space-y-4">
-          {faqs.map((faq, i) => (
-            <details class="bg-gray-50 rounded-xl group" open={i === 0}>
-              <summary class="p-6 font-semibold cursor-pointer flex items-center justify-between gap-4 list-none">
-                {faq.question}
-                <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
-              </summary>
-              <div class="px-6 pb-6 text-gray-600">{faq.answer}</div>
-            </details>
-          ))}
+        <div class="flex flex-wrap gap-4">
+          <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-gold text-lg px-8 py-4">
+            <svg class="w-6 h-6 animate-phone" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            Call {siteConfig.phone}
+          </a>
+          <a href="/contact/" class="btn border-2 border-white text-white hover:bg-white hover:text-slate text-lg px-8">
+            Get Free Quote
+          </a>
         </div>
       </div>
     </div>
   </section>
   
-  <!-- CTA -->
+  <!-- Trust Bar -->
+  <section class="bg-sand py-6 border-b border-primary/20">
+    <div class="container">
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 text-center">
+        <div>
+          <div class="text-3xl font-bold text-primary">300+</div>
+          <div class="text-sm text-gray-600">Slabs Poured</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-primary">15+</div>
+          <div class="text-sm text-gray-600">Years Experience</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-primary">5.0★</div>
+          <div class="text-sm text-gray-600">Average Rating</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-primary">4,000</div>
+          <div class="text-sm text-gray-600">PSI Concrete</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Main Content -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <!-- Main Content -->
+        <div class="lg:col-span-2">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Professional Concrete Slab Installation in {siteConfig.county}</h2>
+          
+          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+            A concrete slab is only as good as its foundation and construction. In Palm Beach County's sandy soils and subtropical climate, proper slab installation requires expertise that goes beyond simply pouring concrete. At {siteConfig.name}, we specialize in concrete slabs engineered to perform for decades — whether you need a foundation for a new garage, a pad for your RV, or a level base for a backyard shed.
+          </p>
+          
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Our experienced crews understand the unique challenges of building on South Florida's expansive soils. We use proper compaction techniques, appropriate subbase materials, and quality reinforcement to create slabs that resist settling, cracking, and damage from Florida's intense heat and seasonal rains. Every slab we pour is built to exceed local building codes and stand the test of time.
+          </p>
+          
+          <h3 class="text-2xl font-bold mb-4 mt-8">Concrete Slab Applications</h3>
+          
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            We pour concrete slabs for virtually any residential application. Here are the most common projects we handle throughout Royal Palm Beach, Wellington, West Palm Beach, and surrounding communities:
+          </p>
+          
+          <div class="grid md:grid-cols-2 gap-4 mb-8">
+            {applications.map(app => (
+              <div class="bg-sand p-4 rounded-lg">
+                <strong class="text-slate block mb-1">{app.name}</strong>
+                <p class="text-sm text-gray-600">{app.description}</p>
+              </div>
+            ))}
+          </div>
+          
+          <h3 class="text-2xl font-bold mb-4 mt-8">Our Slab Installation Process</h3>
+          
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            Every concrete slab we install follows a proven process designed for durability and performance in Palm Beach County's conditions:
+          </p>
+          
+          <ol class="space-y-4 mb-8">
+            <li class="flex items-start gap-4">
+              <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">1</span>
+              <div>
+                <strong class="text-slate">Site Assessment:</strong> We evaluate soil conditions, drainage patterns, and load requirements to determine the right specifications for your slab.
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">2</span>
+              <div>
+                <strong class="text-slate">Excavation & Grading:</strong> We excavate to the proper depth and grade the area for drainage. In areas with poor soil, we may need to remove and replace unsuitable material.
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">3</span>
+              <div>
+                <strong class="text-slate">Subbase Preparation:</strong> A compacted gravel base provides drainage and creates a stable foundation. For areas with moisture concerns, we install vapor barriers.
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">4</span>
+              <div>
+                <strong class="text-slate">Forming & Reinforcement:</strong> Precision forms define the slab boundaries. Rebar or wire mesh reinforcement is installed based on load requirements.
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">5</span>
+              <div>
+                <strong class="text-slate">Pouring & Finishing:</strong> We pour 4,000 PSI concrete with fiber mesh, finish to the specified texture, cut control joints, and apply curing compound.
+              </div>
+            </li>
+          </ol>
+          
+          <h3 class="text-2xl font-bold mb-4 mt-8">Why Proper Slab Construction Matters in Florida</h3>
+          
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            Florida's unique conditions make proper slab construction critical. Here's what we do differently to ensure long-lasting results:
+          </p>
+          
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div><strong class="text-slate">Sandy Soil Expertise:</strong> We compact subbase materials properly and use adequate thickness to prevent settling in Florida's loose, sandy soils.</div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div><strong class="text-slate">Moisture Management:</strong> Vapor barriers protect against moisture intrusion, and proper grading ensures water drains away from structures.</div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div><strong class="text-slate">Heat-Adjusted Curing:</strong> We adjust mix designs and curing methods for Florida's hot temperatures to prevent rapid drying and cracking.</div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div><strong class="text-slate">Proper Reinforcement:</strong> Steel rebar or wire mesh combined with fiber mesh provides the strength needed to resist cracking from soil movement and temperature changes.</div>
+            </li>
+          </ul>
+          
+          <!-- CTA Box -->
+          <div class="bg-slate text-white p-8 rounded-2xl my-12">
+            <h3 class="text-2xl font-bold mb-4">Get Your Free Slab Estimate</h3>
+            <p class="text-gray-300 mb-6">Whether you need a small equipment pad or a large garage slab, we provide free, detailed estimates with no obligation.</p>
+            <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-gold text-lg">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              Call {siteConfig.phone} Today
+            </a>
+          </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="lg:col-span-1">
+          <!-- Quote Form -->
+          <div class="bg-sand rounded-2xl p-6 sticky top-24 mb-8">
+            <h3 class="text-xl font-bold text-slate mb-4 text-center">Free Slab Quote</h3>
+            <form class="space-y-4" action="https://services.leadconnectorhq.com/hooks/formSubmit" method="POST">
+              <input type="hidden" name="location_id" value="OsNgWuy8oZzLbp5BXbnD">
+              <input type="hidden" name="form_name" value="Slab Quote">
+              <input type="hidden" name="service" value="concrete-slabs">
+              <input type="text" name="name" placeholder="Your Name *" required class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary outline-none">
+              <input type="tel" name="phone" placeholder="Phone *" required class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary outline-none">
+              <input type="email" name="email" placeholder="Email" class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary outline-none">
+              <textarea name="message" rows="3" placeholder="Type of slab needed, dimensions" class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary outline-none resize-none"></textarea>
+              <button type="submit" class="btn btn-primary w-full">Get Free Quote</button>
+            </form>
+          </div>
+          
+          <!-- Specifications -->
+          <div class="bg-white rounded-2xl shadow-lg p-6">
+            <h3 class="text-xl font-bold text-slate mb-4">Our Slab Standards</h3>
+            <ul class="space-y-3 text-sm">
+              <li class="flex justify-between py-2 border-b border-gray-100">
+                <span class="text-gray-600">Concrete Strength</span>
+                <span class="font-bold text-slate">4,000 PSI</span>
+              </li>
+              <li class="flex justify-between py-2 border-b border-gray-100">
+                <span class="text-gray-600">Min. Thickness</span>
+                <span class="font-bold text-slate">4 inches</span>
+              </li>
+              <li class="flex justify-between py-2 border-b border-gray-100">
+                <span class="text-gray-600">Reinforcement</span>
+                <span class="font-bold text-slate">Fiber + Rebar/Mesh</span>
+              </li>
+              <li class="flex justify-between py-2 border-b border-gray-100">
+                <span class="text-gray-600">Subbase</span>
+                <span class="font-bold text-slate">4-6" Compacted</span>
+              </li>
+              <li class="flex justify-between py-2 border-b border-gray-100">
+                <span class="text-gray-600">Control Joints</span>
+                <span class="font-bold text-slate">Every 10-12 ft</span>
+              </li>
+              <li class="flex justify-between py-2">
+                <span class="text-gray-600">Curing Compound</span>
+                <span class="font-bold text-slate">Applied</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Common questions about concrete slabs in {siteConfig.county}</p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq, i) => (
+          <details class="card group" open={i === 0}>
+            <summary class="p-6 font-semibold cursor-pointer flex items-center justify-between gap-4 list-none">
+              <span class="text-lg">{faq.question}</span>
+              <svg class="w-5 h-5 text-primary group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-gray-600 leading-relaxed">{faq.answer}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
   <section class="bg-gradient-to-r from-primary to-primary-dark py-16 text-white text-center">
     <div class="container">
-      <h2 class="text-3xl font-bold mb-4">Need a Concrete Slab?</h2>
-      <p class="text-lg opacity-90 mb-8">Get a free estimate for your project today.</p>
-      <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-white text-lg px-8">Call {siteConfig.phone}</a>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Need a Concrete Slab?</h2>
+      <p class="text-xl opacity-90 mb-8 max-w-2xl mx-auto">Get a free estimate for your slab project. No job is too big or too small.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-white text-lg px-8">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          {siteConfig.phone}
+        </a>
+        <a href="/contact/" class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8">
+          Request Quote Online
+        </a>
+      </div>
     </div>
   </section>
 </BaseLayout>

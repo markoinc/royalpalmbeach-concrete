@@ -2,18 +2,45 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../config/site';
 
+const benefits = [
+  {
+    title: "Perfect for Florida Living",
+    description: "Concrete patios handle South Florida's heat, humidity, and tropical storms while providing comfortable outdoor living spaces year-round."
+  },
+  {
+    title: "Endless Design Options",
+    description: "Stamped, stained, colored, or textured — create a patio that perfectly complements your home's architecture and landscaping."
+  },
+  {
+    title: "Low Maintenance",
+    description: "Unlike wood decks or natural stone, concrete patios require minimal upkeep. Occasional cleaning and resealing keeps them looking beautiful."
+  },
+  {
+    title: "Excellent ROI",
+    description: "A well-designed patio expands your living space and can return 50-75% of your investment when selling your home."
+  }
+];
+
 const faqs = [
   {
-    question: `How much does a concrete patio cost in ${siteConfig.address.city}?`,
-    answer: `Concrete patio costs in ${siteConfig.address.city} range from $8-$20 per square foot depending on finish type. A basic 200 sq ft patio costs $1,600-$4,000. Stamped or decorative concrete patios cost more.`
+    question: "How much does a concrete patio cost in Palm Beach County?",
+    answer: `Concrete patio costs in Royal Palm Beach and surrounding areas typically range from $8-$20 per square foot, depending on size, finish type, and site conditions. A standard 300-400 sq ft patio costs $3,000-$8,000 for basic installation. Stamped or decorative finishes add $3-8 per square foot. Factors affecting price include existing patio removal, site grading, and decorative features like built-in seating or fire pit pads. Call ${siteConfig.phone} for a free, personalized estimate.`
   },
   {
-    question: "What finishes are available for concrete patios?",
-    answer: "We offer broom finish, stamped concrete (mimics stone, brick, tile), exposed aggregate, stained concrete, and smooth trowel finish. Stamped patterns include flagstone, cobblestone, brick, tile, and wood plank designs."
+    question: "How thick should a concrete patio be?",
+    answer: "For residential patios in Palm Beach County, we recommend a minimum thickness of 4 inches using 4,000 PSI concrete with fiber mesh reinforcement. For patios that will support heavy furniture, hot tubs, or outdoor kitchens, we may recommend 5-6 inches with rebar reinforcement. The subbase is equally important — we use a properly compacted gravel base for drainage and stability."
   },
   {
-    question: "How long does it take to install a concrete patio?",
-    answer: "A typical patio installation takes 2-3 days. This includes excavation, forming, pouring, and finishing. You can walk on the patio after 24-48 hours and place furniture after 7 days."
+    question: "What's the best concrete finish for a pool deck or patio?",
+    answer: "For pool decks and patios in South Florida, we recommend finishes that provide good slip resistance when wet. Popular options include broom finish, exposed aggregate, and cool deck overlay. Stamped concrete can also be textured for slip resistance. We also use cool-deck coatings that reduce surface temperature, making barefoot walking more comfortable in Florida's intense sun."
+  },
+  {
+    question: "Can you add a patio to an existing pool area?",
+    answer: "Absolutely! We frequently expand existing pool decks and add patios adjacent to pools. We ensure proper drainage away from the pool, match existing finishes when possible, and can incorporate features like outdoor kitchens, fire pits, and seating areas. We're experienced in working around existing landscaping and pool equipment."
+  },
+  {
+    question: "How long does a patio installation take?",
+    answer: "Most residential patio projects take 3-7 days depending on size and complexity. A basic 300 sq ft patio typically takes 3-4 days. Larger projects or those requiring significant site work, stamping, or special features may take 5-7 days. You can typically use light furniture after 24-48 hours, but we recommend waiting 7 days before placing heavy items."
   }
 ];
 
@@ -23,105 +50,301 @@ const faqSchema = {
   "mainEntity": faqs.map(faq => ({
     "@type": "Question",
     "name": faq.question,
-    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
   }))
 };
 ---
 
 <BaseLayout 
-  title={`Concrete Patio Contractors ${siteConfig.address.city} FL`}
-  description={`Expert concrete patio installation in ${siteConfig.address.city}, FL. Custom patios, pool decks, stamped concrete. Call ${siteConfig.phone} for a free estimate.`}
-  canonical={`${siteConfig.url}/concrete-patios/`}
+  title={`Concrete Patio Contractors in ${siteConfig.address.city}, FL | ${siteConfig.name}`}
+  description={`Expert concrete patio installation in ${siteConfig.address.city} & Palm Beach County. Pool decks, stamped patios & outdoor living spaces. Free estimates! Call ${siteConfig.phone}`}
+  canonical="/concrete-patios/"
   schema={[faqSchema]}
 >
-  <!-- Hero -->
-  <section class="bg-gradient-to-br from-navy to-navy-dark text-white py-16 md:py-24">
-    <div class="container text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">Concrete Patio Contractors</h1>
-      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">Beautiful, durable concrete patios for outdoor living in {siteConfig.address.city} and {siteConfig.county}.</p>
-      <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-primary text-lg px-8">Call {siteConfig.phone}</a>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-slate via-slate-light to-slate-dark text-white py-16 md:py-24 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img src="/images/concrete-patio.webp" alt="Concrete patio in Palm Beach County" class="w-full h-full object-cover" />
     </div>
-  </section>
-  
-  <!-- Content -->
-  <section class="py-16 md:py-24">
-    <div class="container">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-navy mb-6">Custom Concrete Patios in {siteConfig.address.city}</h2>
+    <div class="absolute inset-0 bg-gradient-to-r from-slate/95 to-slate/80"></div>
+    
+    <div class="container relative">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 px-4 py-2 rounded-full text-sm mb-6">
+          <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          Top-Rated Patio Contractors
+        </span>
         
-        <p class="text-gray-600 mb-6">
-          Extend your living space outdoors with a beautiful concrete patio. {siteConfig.address.stateFullName}'s year-round warm weather makes outdoor living spaces essential. Our expert team designs and installs custom concrete patios that complement your home and lifestyle.
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          Concrete Patio Contractors in <span class="text-primary">{siteConfig.address.city}</span>
+        </h1>
+        
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+          Create your perfect outdoor living space with a beautiful concrete patio. From pool decks to covered lanais, we design and build patios that transform your backyard into a Florida paradise.
         </p>
         
-        <h3 class="text-2xl font-bold mb-4">Our Patio Services Include:</h3>
-        <ul class="space-y-3 mb-8">
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+        <div class="flex flex-wrap gap-4 mb-8">
+          <div class="flex items-center gap-2 text-sm bg-white/10 px-4 py-2 rounded-full">
+            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
             </svg>
-            <span><strong>Custom Patio Design</strong> - Patios of any size and shape to fit your space</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+            Licensed & Insured
+          </div>
+          <div class="flex items-center gap-2 text-sm bg-white/10 px-4 py-2 rounded-full">
+            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
             </svg>
-            <span><strong>Pool Decks</strong> - Slip-resistant, cool-to-the-touch pool surrounds</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+            Free Estimates
+          </div>
+          <div class="flex items-center gap-2 text-sm bg-white/10 px-4 py-2 rounded-full">
+            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
             </svg>
-            <span><strong>Stamped & Decorative</strong> - Patterns that mimic natural stone, brick, and tile</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-            </svg>
-            <span><strong>Patio Extensions</strong> - Expand your existing outdoor space</span>
-          </li>
-        </ul>
-        
-        <div class="bg-gray-50 rounded-xl p-8 mb-12">
-          <h3 class="text-2xl font-bold mb-6">Patio Pricing Guide</h3>
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-white p-6 rounded-lg shadow-sm">
-              <h4 class="font-bold text-lg mb-2">Basic Patio</h4>
-              <p class="text-3xl font-bold text-primary mb-2">$8 - $12/sq ft</p>
-              <p class="text-gray-600 text-sm">Broom or smooth finish</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow-sm">
-              <h4 class="font-bold text-lg mb-2">Stamped Patio</h4>
-              <p class="text-3xl font-bold text-primary mb-2">$14 - $20/sq ft</p>
-              <p class="text-gray-600 text-sm">Decorative patterns & colors</p>
-            </div>
+            Pool Deck Experts
           </div>
         </div>
         
-        <!-- FAQ Section -->
-        <h3 class="text-2xl font-bold mb-6">Frequently Asked Questions</h3>
-        <div class="space-y-4">
-          {faqs.map((faq, i) => (
-            <details class="bg-gray-50 rounded-xl group" open={i === 0}>
-              <summary class="p-6 font-semibold cursor-pointer flex items-center justify-between gap-4 list-none">
-                {faq.question}
-                <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
-              </summary>
-              <div class="px-6 pb-6 text-gray-600">{faq.answer}</div>
-            </details>
-          ))}
+        <div class="flex flex-wrap gap-4">
+          <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-gold text-lg px-8 py-4">
+            <svg class="w-6 h-6 animate-phone" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            Call {siteConfig.phone}
+          </a>
+          <a href="/contact/" class="btn border-2 border-white text-white hover:bg-white hover:text-slate text-lg px-8">
+            Get Free Quote
+          </a>
         </div>
       </div>
     </div>
   </section>
   
-  <!-- CTA -->
+  <!-- Trust Bar -->
+  <section class="bg-sand py-6 border-b border-primary/20">
+    <div class="container">
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 text-center">
+        <div>
+          <div class="text-3xl font-bold text-primary">400+</div>
+          <div class="text-sm text-gray-600">Patios Built</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-primary">15+</div>
+          <div class="text-sm text-gray-600">Years Experience</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-primary">5.0★</div>
+          <div class="text-sm text-gray-600">Average Rating</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-primary">100%</div>
+          <div class="text-sm text-gray-600">Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Main Content -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <!-- Main Content -->
+        <div class="lg:col-span-2">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Professional Concrete Patio Installation in {siteConfig.county}</h2>
+          
+          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+            In South Florida, outdoor living isn't just a luxury — it's a way of life. A beautifully designed concrete patio extends your home's living space, creating the perfect setting for family gatherings, quiet morning coffees, and entertaining friends. At {siteConfig.name}, we specialize in creating custom concrete patios that enhance your lifestyle while standing up to Palm Beach County's demanding climate.
+          </p>
+          
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Our team has built hundreds of patios throughout Royal Palm Beach, Wellington, West Palm Beach, Palm Beach Gardens, and surrounding communities. We understand what works best in Florida's subtropical environment — from slip-resistant finishes for pool areas to cool-deck coatings that keep surfaces comfortable underfoot during hot summer days. Whether you're looking for a simple extension of your existing living space or a complete outdoor living transformation, we have the expertise to bring your vision to life.
+          </p>
+          
+          <h3 class="text-2xl font-bold mb-4 mt-8">Concrete Patio Designs for Every Style</h3>
+          
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            Your patio should be as unique as your home. We offer a comprehensive range of design options to match any architectural style, from traditional Florida homes to contemporary masterpieces:
+          </p>
+          
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start gap-4">
+              <svg class="w-6 h-6 text-primary mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div>
+                <strong class="text-slate">Stamped Concrete Patios:</strong> Transform plain concrete into the look of natural stone, brick, slate, or wood planks. Our stamped concrete patios offer the beauty of expensive materials at a fraction of the cost, with superior durability for Florida's climate.
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <svg class="w-6 h-6 text-primary mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div>
+                <strong class="text-slate">Pool Deck Patios:</strong> Extend your pool area with slip-resistant concrete that stays cool underfoot. We specialize in cool-deck finishes, textured surfaces, and decorative treatments that complement your pool design while ensuring safety.
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <svg class="w-6 h-6 text-primary mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div>
+                <strong class="text-slate">Covered Lanai Extensions:</strong> Build a solid foundation for your covered outdoor living space. We can incorporate features like outdoor kitchen pads, fire pit areas, and built-in seating, all designed to integrate seamlessly with your home's architecture.
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <svg class="w-6 h-6 text-primary mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div>
+                <strong class="text-slate">Exposed Aggregate Patios:</strong> Reveal the natural beauty of decorative stones within the concrete for a unique, textured appearance. Exposed aggregate is slip-resistant and offers excellent durability for high-traffic outdoor areas.
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <svg class="w-6 h-6 text-primary mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div>
+                <strong class="text-slate">Stained Concrete Patios:</strong> Add rich, permanent color to your patio with acid stains or water-based stains. Choose from earthy tones that blend with nature or bold colors that make a statement. Staining can be combined with other techniques for unique effects.
+              </div>
+            </li>
+          </ul>
+          
+          <h3 class="text-2xl font-bold mb-4 mt-8">Why Concrete is Perfect for Florida Patios</h3>
+          
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            Homeowners throughout {siteConfig.county} choose concrete for their patios because it handles South Florida's unique challenges better than any other material:
+          </p>
+          
+          <ul class="list-disc list-inside text-gray-600 space-y-2 mb-8">
+            <li><strong>Heat Management:</strong> With proper coatings, concrete stays cooler than pavers, tile, or stone, making it more comfortable for barefoot walking in summer.</li>
+            <li><strong>Storm Resistance:</strong> Properly installed concrete withstands tropical storms, heavy rains, and even occasional flooding without damage.</li>
+            <li><strong>No Settling or Shifting:</strong> Unlike pavers that can shift over time, a solid concrete patio maintains its level surface for decades.</li>
+            <li><strong>Pest Resistant:</strong> Unlike wood decks that attract termites, concrete provides no habitat for Florida's abundant insects.</li>
+            <li><strong>Easy Cleaning:</strong> Pressure washing and occasional resealing keeps concrete patios looking like new year after year.</li>
+            <li><strong>Design Flexibility:</strong> Concrete can mimic virtually any material while costing less and lasting longer.</li>
+          </ul>
+          
+          <h3 class="text-2xl font-bold mb-4 mt-8">Outdoor Living Features We Build</h3>
+          
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            A great patio is more than just a flat surface. We can incorporate a variety of features to create your ideal outdoor living space:
+          </p>
+          
+          <div class="grid md:grid-cols-2 gap-4 mb-8">
+            <div class="bg-sand p-4 rounded-lg">
+              <strong class="text-slate block mb-2">Outdoor Kitchen Pads</strong>
+              <p class="text-sm text-gray-600">Reinforced concrete foundations for built-in grills, counters, and appliances.</p>
+            </div>
+            <div class="bg-sand p-4 rounded-lg">
+              <strong class="text-slate block mb-2">Fire Pit Areas</strong>
+              <p class="text-sm text-gray-600">Properly designed pads for gas or wood-burning fire features.</p>
+            </div>
+            <div class="bg-sand p-4 rounded-lg">
+              <strong class="text-slate block mb-2">Built-In Seating</strong>
+              <p class="text-sm text-gray-600">Integrated concrete benches and seat walls for permanent seating.</p>
+            </div>
+            <div class="bg-sand p-4 rounded-lg">
+              <strong class="text-slate block mb-2">Decorative Borders</strong>
+              <p class="text-sm text-gray-600">Contrasting borders and inlays that define spaces and add visual interest.</p>
+            </div>
+          </div>
+          
+          <!-- CTA Box -->
+          <div class="bg-slate text-white p-8 rounded-2xl my-12">
+            <h3 class="text-2xl font-bold mb-4">Design Your Perfect Patio</h3>
+            <p class="text-gray-300 mb-6">Ready to transform your backyard? We provide free design consultations and detailed estimates. Let us help you create the outdoor living space you've always wanted.</p>
+            <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-gold text-lg">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              Call {siteConfig.phone} Today
+            </a>
+          </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="lg:col-span-1">
+          <!-- Quote Form -->
+          <div class="bg-sand rounded-2xl p-6 sticky top-24 mb-8">
+            <h3 class="text-xl font-bold text-slate mb-4 text-center">Free Patio Quote</h3>
+            <form class="space-y-4" action="https://services.leadconnectorhq.com/hooks/formSubmit" method="POST">
+              <input type="hidden" name="location_id" value="OsNgWuy8oZzLbp5BXbnD">
+              <input type="hidden" name="form_name" value="Patio Quote">
+              <input type="hidden" name="service" value="concrete-patios">
+              <input type="text" name="name" placeholder="Your Name *" required class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary outline-none">
+              <input type="tel" name="phone" placeholder="Phone *" required class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary outline-none">
+              <input type="email" name="email" placeholder="Email" class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary outline-none">
+              <textarea name="message" rows="3" placeholder="Describe your patio project" class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary outline-none resize-none"></textarea>
+              <button type="submit" class="btn btn-primary w-full">Get Free Quote</button>
+            </form>
+          </div>
+          
+          <!-- Benefits -->
+          <div class="bg-white rounded-2xl shadow-lg p-6">
+            <h3 class="text-xl font-bold text-slate mb-4">Why Choose Us?</h3>
+            <ul class="space-y-4">
+              {benefits.map(benefit => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-primary mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                  </svg>
+                  <div>
+                    <strong class="block text-slate">{benefit.title}</strong>
+                    <span class="text-sm text-gray-600">{benefit.description}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Common questions about concrete patios in {siteConfig.county}</p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq, i) => (
+          <details class="card group" open={i === 0}>
+            <summary class="p-6 font-semibold cursor-pointer flex items-center justify-between gap-4 list-none">
+              <span class="text-lg">{faq.question}</span>
+              <svg class="w-5 h-5 text-primary group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-gray-600 leading-relaxed">{faq.answer}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
   <section class="bg-gradient-to-r from-primary to-primary-dark py-16 text-white text-center">
     <div class="container">
-      <h2 class="text-3xl font-bold mb-4">Create Your Perfect Outdoor Space</h2>
-      <p class="text-lg opacity-90 mb-8">Get a free estimate for your concrete patio today.</p>
-      <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-white text-lg px-8">Call {siteConfig.phone}</a>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Build Your Dream Patio?</h2>
+      <p class="text-xl opacity-90 mb-8 max-w-2xl mx-auto">Get a free design consultation and see why Palm Beach County homeowners trust us for their outdoor living spaces.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-white text-lg px-8">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          {siteConfig.phone}
+        </a>
+        <a href="/contact/" class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8">
+          Request Quote Online
+        </a>
+      </div>
     </div>
   </section>
 </BaseLayout>

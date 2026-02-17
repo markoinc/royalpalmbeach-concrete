@@ -2,24 +2,45 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../config/site';
 
-const service = siteConfig.services[0];
+const benefits = [
+  {
+    title: "Exceptional Durability",
+    description: "Our concrete driveways are built to withstand Florida's intense sun, heavy rains, and daily vehicle traffic for 25-30+ years with minimal maintenance."
+  },
+  {
+    title: "Increased Property Value",
+    description: "A beautiful concrete driveway can increase your home's curb appeal and property value by 5-10%, making it one of the best exterior investments."
+  },
+  {
+    title: "Low Maintenance",
+    description: "Unlike pavers or asphalt, concrete driveways require minimal upkeep. Occasional cleaning and resealing every few years keeps them looking great."
+  },
+  {
+    title: "Design Flexibility",
+    description: "Choose from stamped patterns, stained colors, exposed aggregate, or classic broom finishes to complement your home's architecture."
+  }
+];
 
 const faqs = [
   {
-    question: `How much does a concrete driveway cost in ${siteConfig.address.city}?`,
-    answer: `Concrete driveway costs in ${siteConfig.address.city} range from $8-$18 per square foot. A standard 400 sq ft single-car driveway costs $3,200-$7,200. A two-car 600 sq ft driveway costs $4,800-$10,800. Stamped concrete driveways cost 40-60% more.`
+    question: "How much does a concrete driveway cost in Palm Beach County?",
+    answer: `Concrete driveway costs in Royal Palm Beach and surrounding areas typically range from $8-$18 per square foot. A standard 400-600 sq ft driveway costs $4,000-$10,000 for basic installation. Stamped or decorative concrete adds $3-6 per square foot. Factors affecting price include site preparation, removal of existing driveway, thickness, reinforcement, and finish type. Call ${siteConfig.phone} for a free, accurate estimate for your specific project.`
   },
   {
-    question: "How thick should a concrete driveway be?",
-    answer: "A residential concrete driveway should be 4 inches thick minimum for cars and light trucks. For heavy vehicles like RVs, trucks, or trailers, we recommend 5-6 inches. The driveway apron should be 6 inches thick. We use 4,000 PSI concrete and rebar reinforcement."
+    question: "How thick should a residential concrete driveway be?",
+    answer: "For residential driveways in Palm Beach County, we recommend a minimum thickness of 4 inches using 4,000 PSI concrete. If you have heavier vehicles like RVs, trucks, or boats on trailers, we recommend 5-6 inches with additional steel reinforcement. The subbase is equally important — we use a compacted 4-6 inch gravel base to ensure proper drainage and prevent settling in Florida's sandy soils."
   },
   {
-    question: "How long does a concrete driveway last?",
-    answer: `A properly installed concrete driveway lasts 25-30 years in ${siteConfig.address.stateFullName}. With proper maintenance including sealing every 2-3 years and prompt crack repair, many driveways last 40-50 years.`
+    question: "How long does a concrete driveway installation take?",
+    answer: "Most residential driveway projects take 3-5 days total: 1-2 days for site preparation and forming, 1 day for pouring, and 1-2 days for finishing and cleanup. You can walk on the driveway after 24-48 hours, but should wait 7 days before driving vehicles on it to allow proper curing."
   },
   {
-    question: "How long until I can drive on a new concrete driveway?",
-    answer: "Wait 7 days before driving passenger vehicles on a new concrete driveway. Heavy trucks and RVs should wait 28 days for full cure. You can walk on the driveway after 24-48 hours."
+    question: "What causes concrete driveways to crack?",
+    answer: "Common causes include improper subbase preparation, inadequate control joints, too-thin concrete, rapid drying in hot weather, heavy vehicle loads, and tree root intrusion. We prevent cracking by using proper mix designs, adequate thickness, control joints every 10-12 feet, fiber mesh or rebar reinforcement, and careful curing techniques suited to Florida's climate."
+  },
+  {
+    question: "Can you replace just part of my driveway?",
+    answer: "Yes, we can perform partial driveway replacements for sections that are severely damaged. However, matching the color and texture of existing concrete can be challenging. We'll assess your driveway and recommend whether partial replacement or full replacement makes more sense for your situation and budget."
   }
 ];
 
@@ -29,127 +50,325 @@ const faqSchema = {
   "mainEntity": faqs.map(faq => ({
     "@type": "Question",
     "name": faq.question,
-    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
   }))
-};
-
-const serviceSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Concrete Driveway Installation",
-  "provider": {
-    "@type": "LocalBusiness",
-    "name": siteConfig.name,
-    "telephone": siteConfig.phone
-  },
-  "areaServed": siteConfig.serviceAreas.map(a => ({ "@type": "City", "name": a.name })),
-  "description": service.description
 };
 ---
 
 <BaseLayout 
-  title={`Concrete Driveway Contractors ${siteConfig.address.city} FL`}
-  description={`Expert concrete driveway contractors in ${siteConfig.address.city}, FL. New driveways, resurfacing, repairs. Call ${siteConfig.phone} for a free estimate.`}
-  canonical={`${siteConfig.url}/concrete-driveways/`}
-  schema={[faqSchema, serviceSchema]}
+  title={`Concrete Driveway Contractors in ${siteConfig.address.city}, FL | ${siteConfig.name}`}
+  description={`Expert concrete driveway installation in ${siteConfig.address.city} & Palm Beach County. Stamped, stained & traditional driveways. Licensed & insured. Free estimates! Call ${siteConfig.phone}`}
+  canonical="/concrete-driveways/"
+  schema={[faqSchema]}
 >
-  <!-- Hero -->
-  <section class="bg-gradient-to-br from-navy to-navy-dark text-white py-16 md:py-24">
-    <div class="container text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">Concrete Driveway Contractors</h1>
-      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">Professional concrete driveway installation, replacement, and repair services in {siteConfig.address.city} and {siteConfig.county}.</p>
-      <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-primary text-lg px-8">
-        Call {siteConfig.phone} for a Free Estimate
-      </a>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-slate via-slate-light to-slate-dark text-white py-16 md:py-24 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img src="/images/driveway-bighouse.webp" alt="Concrete driveway in Palm Beach County" class="w-full h-full object-cover" />
     </div>
-  </section>
-  
-  <!-- Content -->
-  <section class="py-16 md:py-24">
-    <div class="container">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-navy mb-6">Expert Concrete Driveway Installation in {siteConfig.address.city}</h2>
+    <div class="absolute inset-0 bg-gradient-to-r from-slate/95 to-slate/80"></div>
+    
+    <div class="container relative">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 px-4 py-2 rounded-full text-sm mb-6">
+          <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          Top-Rated Driveway Contractors
+        </span>
         
-        <p class="text-gray-600 mb-6">
-          Your driveway is one of the first things visitors see when they arrive at your home. A well-designed concrete driveway not only enhances curb appeal but also adds value to your property. At {siteConfig.name}, we specialize in creating beautiful, durable concrete driveways that stand the test of time.
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          Concrete Driveway Contractors in <span class="text-primary">{siteConfig.address.city}</span>
+        </h1>
+        
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+          Transform your home's entrance with a beautiful, durable concrete driveway. From classic broom finishes to stunning stamped designs, we create driveways built to last for decades in {siteConfig.county}'s climate.
         </p>
         
-        <h3 class="text-2xl font-bold mb-4">Our Driveway Services Include:</h3>
-        <ul class="space-y-3 mb-8">
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+        <div class="flex flex-wrap gap-4 mb-8">
+          <div class="flex items-center gap-2 text-sm bg-white/10 px-4 py-2 rounded-full">
+            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
             </svg>
-            <span><strong>New Driveway Installation</strong> - Complete driveway construction from excavation to finishing</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+            Licensed & Insured
+          </div>
+          <div class="flex items-center gap-2 text-sm bg-white/10 px-4 py-2 rounded-full">
+            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
             </svg>
-            <span><strong>Driveway Replacement</strong> - Remove old concrete and install a brand new driveway</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+            Free Estimates
+          </div>
+          <div class="flex items-center gap-2 text-sm bg-white/10 px-4 py-2 rounded-full">
+            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
             </svg>
-            <span><strong>Driveway Extensions</strong> - Extend your existing driveway for more parking space</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-            </svg>
-            <span><strong>Decorative Options</strong> - Stamped, stained, and exposed aggregate finishes</span>
-          </li>
-        </ul>
-        
-        <h3 class="text-2xl font-bold mb-4">Why Choose Concrete for Your Driveway?</h3>
-        <p class="text-gray-600 mb-6">
-          Concrete is the premier choice for driveways in {siteConfig.address.stateFullName}. It offers superior durability compared to asphalt, requires less maintenance, and can be customized with various finishes and colors. A properly installed concrete driveway will last 25-30 years or more, making it an excellent long-term investment.
-        </p>
-        
-        <div class="bg-gray-50 rounded-xl p-8 mb-12">
-          <h3 class="text-2xl font-bold mb-6">Driveway Pricing Guide</h3>
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-white p-6 rounded-lg shadow-sm">
-              <h4 class="font-bold text-lg mb-2">Standard Concrete</h4>
-              <p class="text-3xl font-bold text-primary mb-2">$8 - $12/sq ft</p>
-              <p class="text-gray-600 text-sm">Basic broom finish, 4" thickness</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow-sm">
-              <h4 class="font-bold text-lg mb-2">Stamped Concrete</h4>
-              <p class="text-3xl font-bold text-primary mb-2">$12 - $18/sq ft</p>
-              <p class="text-gray-600 text-sm">Decorative patterns, colored finish</p>
-            </div>
+            25+ Year Lifespan
           </div>
         </div>
         
-        <!-- FAQ Section -->
-        <h3 class="text-2xl font-bold mb-6">Frequently Asked Questions</h3>
-        <div class="space-y-4 mb-12">
-          {faqs.map((faq, i) => (
-            <details class="bg-gray-50 rounded-xl group" open={i === 0}>
-              <summary class="p-6 font-semibold cursor-pointer flex items-center justify-between gap-4 list-none">
-                {faq.question}
-                <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
-              </summary>
-              <div class="px-6 pb-6 text-gray-600">{faq.answer}</div>
-            </details>
-          ))}
+        <div class="flex flex-wrap gap-4">
+          <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-gold text-lg px-8 py-4">
+            <svg class="w-6 h-6 animate-phone" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            Call {siteConfig.phone}
+          </a>
+          <a href="/contact/" class="btn border-2 border-white text-white hover:bg-white hover:text-slate text-lg px-8">
+            Get Free Quote
+          </a>
         </div>
       </div>
     </div>
   </section>
   
-  <!-- CTA -->
+  <!-- Trust Bar -->
+  <section class="bg-sand py-6 border-b border-primary/20">
+    <div class="container">
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 text-center">
+        <div>
+          <div class="text-3xl font-bold text-primary">500+</div>
+          <div class="text-sm text-gray-600">Driveways Installed</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-primary">15+</div>
+          <div class="text-sm text-gray-600">Years Experience</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-primary">5.0★</div>
+          <div class="text-sm text-gray-600">Average Rating</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-primary">100%</div>
+          <div class="text-sm text-gray-600">Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Main Content -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <!-- Main Content -->
+        <div class="lg:col-span-2">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Expert Concrete Driveway Installation in {siteConfig.county}</h2>
+          
+          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+            Your driveway is one of the first things visitors notice about your home. A well-designed, professionally installed concrete driveway not only enhances your property's curb appeal but also provides decades of reliable service with minimal maintenance. At {siteConfig.name}, we specialize in creating beautiful, durable concrete driveways that stand up to Palm Beach County's demanding climate.
+          </p>
+          
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Since establishing our company, we've installed over 500 concrete driveways throughout Royal Palm Beach, Wellington, West Palm Beach, Palm Beach Gardens, Jupiter, and surrounding communities. Our experienced crews understand the unique challenges of working in South Florida — from properly preparing sandy soils to adjusting mix designs for hot, humid conditions. This local expertise ensures your driveway will look beautiful and perform flawlessly for 25-30 years or more.
+          </p>
+          
+          <h3 class="text-2xl font-bold mb-4 mt-8">Concrete Driveway Options We Offer</h3>
+          
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            Every home is unique, and your driveway should reflect your personal style. We offer a full range of concrete driveway options to complement any architectural style, from Mediterranean villas in Wellington to modern homes in Palm Beach Gardens:
+          </p>
+          
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start gap-4">
+              <svg class="w-6 h-6 text-primary mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div>
+                <strong class="text-slate">Stamped Concrete Driveways:</strong> Create the look of natural stone, brick, slate, or tile at a fraction of the cost. Popular patterns include cobblestone, herringbone, and Ashlar slate. We use high-quality stamping tools and color hardeners that won't fade in Florida's intense sunlight.
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <svg class="w-6 h-6 text-primary mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div>
+                <strong class="text-slate">Stained Concrete Driveways:</strong> Add rich, permanent color to your driveway with acid stains or water-based stains. Choose from earthy browns and terra cottas to elegant grays and charcoals. Staining can be combined with stamping for truly custom results.
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <svg class="w-6 h-6 text-primary mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div>
+                <strong class="text-slate">Exposed Aggregate Driveways:</strong> A popular choice in Palm Beach County, exposed aggregate reveals the natural beauty of decorative stones within the concrete. Available in various stone types and colors to match your landscape design.
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <svg class="w-6 h-6 text-primary mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <div>
+                <strong class="text-slate">Traditional Broom Finish:</strong> The classic, timeless look that never goes out of style. Our broom-finished driveways feature excellent slip resistance and clean, professional lines. A cost-effective choice that delivers exceptional value.
+              </div>
+            </li>
+          </ul>
+          
+          <h3 class="text-2xl font-bold mb-4 mt-8">Our Driveway Installation Process</h3>
+          
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            Professional installation is the key to a long-lasting concrete driveway. Our proven process ensures consistent, high-quality results on every project:
+          </p>
+          
+          <ol class="space-y-4 mb-8">
+            <li class="flex items-start gap-4">
+              <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">1</span>
+              <div>
+                <strong class="text-slate">Site Preparation:</strong> We remove the existing driveway (if applicable), excavate to proper depth, and grade the area for proper drainage away from your home. In areas with poor soil, we may need to add or replace fill material.
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">2</span>
+              <div>
+                <strong class="text-slate">Subbase Installation:</strong> A 4-6 inch layer of crushed gravel or limestone is spread and compacted. This provides drainage, prevents settling, and creates a stable foundation for your concrete.
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">3</span>
+              <div>
+                <strong class="text-slate">Forming & Reinforcement:</strong> We set precision forms to define your driveway's shape and install rebar or wire mesh reinforcement. Control joints are planned every 10-12 feet to manage natural cracking.
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">4</span>
+              <div>
+                <strong class="text-slate">Concrete Pouring:</strong> We use 4,000 PSI concrete with fiber mesh for maximum durability. Our experienced finishers work quickly and efficiently to achieve the perfect surface texture before the concrete sets.
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">5</span>
+              <div>
+                <strong class="text-slate">Finishing & Curing:</strong> Whether stamping, staining, or broom finishing, our skilled craftsmen create beautiful surfaces. We apply curing compound and protect the new concrete during the critical first week.
+              </div>
+            </li>
+          </ol>
+          
+          <h3 class="text-2xl font-bold mb-4 mt-8">Why Concrete is Ideal for Palm Beach County Driveways</h3>
+          
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            Homeowners throughout {siteConfig.county} choose concrete for their driveways because it's perfectly suited to South Florida's climate and conditions:
+          </p>
+          
+          <ul class="list-disc list-inside text-gray-600 space-y-2 mb-8">
+            <li><strong>Heat Resistance:</strong> Unlike asphalt, which softens in extreme heat, concrete maintains its strength and shape even during Florida's hottest summer days.</li>
+            <li><strong>Flood Resistance:</strong> Properly installed concrete withstands the occasional flooding from tropical storms without damage or deterioration.</li>
+            <li><strong>UV Stability:</strong> Quality concrete with proper sealers won't fade or deteriorate from constant sun exposure.</li>
+            <li><strong>Longevity:</strong> A well-built concrete driveway lasts 25-30+ years compared to 15-20 years for asphalt.</li>
+            <li><strong>Lower Maintenance:</strong> No annual sealing required (unlike asphalt). Just occasional cleaning and resealing every 3-5 years.</li>
+            <li><strong>No Staining:</strong> Sealed concrete resists oil and fluid stains from vehicles.</li>
+          </ul>
+          
+          <!-- CTA Box -->
+          <div class="bg-slate text-white p-8 rounded-2xl my-12">
+            <h3 class="text-2xl font-bold mb-4">Get Your Free Driveway Estimate</h3>
+            <p class="text-gray-300 mb-6">Ready to upgrade your driveway? We provide free, detailed estimates with no obligation. Our quotes include all costs — no hidden fees or surprises.</p>
+            <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-gold text-lg">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              Call {siteConfig.phone} Today
+            </a>
+          </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="lg:col-span-1">
+          <!-- Quote Form -->
+          <div class="bg-sand rounded-2xl p-6 sticky top-24 mb-8">
+            <h3 class="text-xl font-bold text-slate mb-4 text-center">Free Driveway Quote</h3>
+            <form class="space-y-4" action="https://services.leadconnectorhq.com/hooks/formSubmit" method="POST">
+              <input type="hidden" name="location_id" value="OsNgWuy8oZzLbp5BXbnD">
+              <input type="hidden" name="form_name" value="Driveway Quote">
+              <input type="hidden" name="service" value="concrete-driveways">
+              <input type="text" name="name" placeholder="Your Name *" required class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary outline-none">
+              <input type="tel" name="phone" placeholder="Phone *" required class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary outline-none">
+              <input type="email" name="email" placeholder="Email" class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary outline-none">
+              <textarea name="message" rows="3" placeholder="Project details" class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary outline-none resize-none"></textarea>
+              <button type="submit" class="btn btn-primary w-full">Get Free Quote</button>
+            </form>
+          </div>
+          
+          <!-- Benefits -->
+          <div class="bg-white rounded-2xl shadow-lg p-6">
+            <h3 class="text-xl font-bold text-slate mb-4">Why Choose Us?</h3>
+            <ul class="space-y-4">
+              {benefits.map(benefit => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-primary mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                  </svg>
+                  <div>
+                    <strong class="block text-slate">{benefit.title}</strong>
+                    <span class="text-sm text-gray-600">{benefit.description}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Common questions about concrete driveways in {siteConfig.county}</p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq, i) => (
+          <details class="card group" open={i === 0}>
+            <summary class="p-6 font-semibold cursor-pointer flex items-center justify-between gap-4 list-none">
+              <span class="text-lg">{faq.question}</span>
+              <svg class="w-5 h-5 text-primary group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-gray-600 leading-relaxed">{faq.answer}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Service Areas -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <h2 class="section-title text-center mb-8">Driveway Installation Throughout {siteConfig.county}</h2>
+      <p class="section-subtitle text-center mb-12">We install concrete driveways in Royal Palm Beach, Wellington, West Palm Beach, and all surrounding communities.</p>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        {siteConfig.serviceAreas.map(area => (
+          <a href={`/locations/${area.slug}/`} class="flex items-center gap-2 p-3 bg-sand rounded-lg hover:bg-primary hover:text-white transition-colors group text-sm">
+            <svg class="w-4 h-4 text-primary group-hover:text-white flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            </svg>
+            {area.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
   <section class="bg-gradient-to-r from-primary to-primary-dark py-16 text-white text-center">
     <div class="container">
-      <h2 class="text-3xl font-bold mb-4">Ready for a New Concrete Driveway?</h2>
-      <p class="text-lg opacity-90 mb-8">Get a free estimate for your driveway project today.</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready for a New Concrete Driveway?</h2>
+      <p class="text-xl opacity-90 mb-8 max-w-2xl mx-auto">Get a free estimate and see why hundreds of Palm Beach County homeowners trust us with their driveways.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-white text-lg px-8">Call {siteConfig.phone}</a>
-        <a href="/contact/" class="btn border-2 border-white hover:bg-white hover:text-primary text-lg px-8">Request Quote Online</a>
+        <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-white text-lg px-8">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          {siteConfig.phone}
+        </a>
+        <a href="/contact/" class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8">
+          Request Quote Online
+        </a>
       </div>
     </div>
   </section>
